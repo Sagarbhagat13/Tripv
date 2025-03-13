@@ -6,6 +6,7 @@ const partners = [
   {
     id: 1,
     name: "MSME",
+    logo: "https://smepost.com/wp-content/uploads/2016/03/msme-logo.jpg",
   },
   {
     id: 2,
