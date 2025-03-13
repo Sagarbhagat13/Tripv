@@ -6,7 +6,6 @@ const partners = [
   {
     id: 1,
     name: "MSME",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Ministry_of_Micro%2C_Small_and_Medium_Enterprises_logo.svg/1200px-Ministry_of_Micro%2C_Small_and_Medium_Enterprises_logo.svg.png",
   },
   {
     id: 2,
