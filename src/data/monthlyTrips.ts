@@ -44,6 +44,17 @@ export const monthlyTrips: MonthlyTrips[] = [
         image: 'https://images.unsplash.com/photo-1602157729150-3edc9cb4c4c6?auto=format&fit=crop&w=800&q=80',
         rating: 4.9,
         reviews: 145
+      },
+      {
+        id: 'jan-4',
+        title: 'Valley of Flowers Trek',
+        location: 'Uttarakhand',
+        price: 24999,
+        discount: 15,
+        duration: '7D/6N',
+        image: 'https://images.unsplash.com/photo-1543039625-14cbd3802e7d?auto=format&fit=crop&w=800&q=80',
+        rating: 4.8,
+        reviews: 145
       }
     ]
   },
