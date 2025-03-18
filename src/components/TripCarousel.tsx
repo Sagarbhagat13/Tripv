@@ -57,7 +57,7 @@ const TripCarousel = ({
   };
   
   const getItemWidth = () => {
-    if (isMobile) return 'w-[70%] sm:w-[50%] md:w-1/4';
+    if (isMobile) return 'w-[65%] sm:w-[50%] md:w-1/4';
     
     switch (itemsPerView) {
       case 1: return 'md:w-full';
