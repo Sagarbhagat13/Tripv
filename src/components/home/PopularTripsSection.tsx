@@ -11,13 +11,18 @@ const PopularTripsSection = () => {
   return (
     <section className="py-12 bg-gray-50">
       <div className="container mx-auto px-4">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Popular Backpacking Trips</h2>
+        
         <TripCarousel 
-          title="Popular Backpacking Trips" 
-          description="Explore our most loved adventures across India"
+          title=""
+          description=""
           itemsPerView={4}
         >
           {popularTrips.map((trip) => (
-            <CarouselCard key={trip.id} {...trip} />
+            <CarouselCard 
+              key={trip.id} 
+              {...trip} 
+            />
           ))}
         </TripCarousel>
         

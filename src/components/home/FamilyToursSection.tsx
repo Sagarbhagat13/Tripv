@@ -11,9 +11,11 @@ const FamilyToursSection = () => {
   return (
     <section className="py-12 bg-gradient-to-b from-green-50 to-white">
       <div className="container mx-auto px-4">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Family Group Tours</h2>
+        
         <TripCarousel 
-          title="Family Group Tours" 
-          description="Create unforgettable memories with your loved ones"
+          title=""
+          description=""
           itemsPerView={4}
         >
           {familyTours.map((trip) => (

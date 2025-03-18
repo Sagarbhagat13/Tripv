@@ -3,18 +3,34 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ItineraryPage from "./pages/ItineraryPage";
 import DayItineraryPage from "./pages/DayItineraryPage";
 import CustomizedTripPage from "./pages/CustomizedTripPage";
+import SuggestedItineraryPage from "./pages/SuggestedItineraryPage";
 import CategoryPage from "./pages/CategoryPage";
+import BackpackingPage from "./pages/BackpackingPage";
 import FloatingInfoButton from "./components/FloatingInfoButton";
 import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
+import ScrollToTop from "./components/ScrollToTop";
+import ContactPage from "./pages/ContactPage";
+import AboutPage from "./pages/AboutPage";
 
 const queryClient = new QueryClient();
+
+const FloatingButtonWrapper = () => {
+  const location = useLocation();
+  const showOnPaths = ['/', '/contact'];
+  
+  if (!showOnPaths.includes(location.pathname)) {
+    return null;
+  }
+  
+  return <FloatingInfoButton />;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -22,13 +38,26 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
-          <Route path="/trip/:tripId" element={<ItineraryPage />} />
+          <Route path="/trip/:id" element={<ItineraryPage />} />
+          <Route path="/suggested-trip/:tripId" element={<SuggestedItineraryPage />} />
           <Route path="/day-itinerary/:tripId" element={<DayItineraryPage />} />
           <Route path="/custom-trip/:tripId" element={<CustomizedTripPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/backpacking" element={<BackpackingPage />} />
+          
+          {/* India routes */}
+          <Route path="/india" element={<CategoryPage />} />
+          <Route path="/india/:state" element={<CategoryPage />} />
+          
+          {/* World routes */}
+          <Route path="/world" element={<CategoryPage />} />
+          <Route path="/world/:country" element={<CategoryPage />} />
           
           {/* Category pages - using the same component but for different routes */}
           <Route path="/popular-trips" element={<CategoryPage />} />
@@ -52,7 +81,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <FloatingInfoButton />
+        <FloatingButtonWrapper />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

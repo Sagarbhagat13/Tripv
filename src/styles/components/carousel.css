@@ -1,0 +1,51 @@
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  cursor: grab;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  gap: 10px; /* Reduced from 12px */
+  padding: 6px 0; /* Reduced from 8px */
+}
+
+.carousel:active {
+  cursor: grabbing;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+.trip-card-shadow {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06); /* Lighter shadow */
+}
+
+.banner-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 60%);
+}
+
+/* Review card styles */
+.review-card {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+/* Consistent card dimensions - reduced heights */
+.trip-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.trip-card-image {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}

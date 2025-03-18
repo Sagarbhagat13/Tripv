@@ -51,13 +51,7 @@ const WhyUsSection = () => {
   return (
     <section className="py-16 bg-gradient-to-r from-[#E6E9F0] to-[#EEF1F5]">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-tripvidya-dark">Why Choose TripVidya</h2>
-          <div className="w-20 h-1 bg-tripvidya-primary mx-auto mt-4 mb-6 rounded-full"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            We're committed to creating unforgettable travel experiences that bring joy, adventure, and discovery to every journey.
-          </p>
-        </div>
+        <h2 className="text-2xl font-bold text-gray-800 mb-12 text-center">Why Choose TripVidya</h2>
         
         {isMobile ? (
           <TripCarousel 

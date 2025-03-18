@@ -19,37 +19,32 @@ const HoneymoonSection = () => {
   return (
     <section className="py-12 bg-gradient-to-r from-[#FFDEE2] to-[#FEC6A1]">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-          <div>
-            <h2 className="text-2xl font-bold text-wanderon-dark">Honeymoon Specials</h2>
-            <p className="text-gray-700">Begin your journey of love with our romantic getaways</p>
-          </div>
-          
-          <div className="flex items-center space-x-2 mt-4 md:mt-0">
-            <Toggle 
-              variant="outline" 
-              pressed={!showInternational} 
-              onPressedChange={() => setShowInternational(false)}
-              className={`${!showInternational ? 'bg-rose-100 border-rose-300 text-rose-700' : 'border-gray-200 text-gray-700'} font-medium`}
-            >
-              <Home className="h-4 w-4 mr-2" />
-              Domestic
-            </Toggle>
-            <Toggle 
-              variant="outline" 
-              pressed={showInternational} 
-              onPressedChange={() => setShowInternational(true)}
-              className={`${showInternational ? 'bg-blue-100 border-blue-300 text-blue-700' : 'border-gray-200 text-gray-700'} font-medium`}
-            >
-              <Plane className="h-4 w-4 mr-2" />
-              International
-            </Toggle>
-          </div>
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Honeymoon Specials</h2>
+        
+        <div className="flex justify-center items-center space-x-2 mb-8">
+          <Toggle 
+            variant="outline" 
+            pressed={!showInternational} 
+            onPressedChange={() => setShowInternational(false)}
+            className={`${!showInternational ? 'bg-rose-100 border-rose-300 text-rose-700' : 'border-gray-200 text-gray-700'} font-medium`}
+          >
+            <Home className="h-4 w-4 mr-2" />
+            Domestic
+          </Toggle>
+          <Toggle 
+            variant="outline" 
+            pressed={showInternational} 
+            onPressedChange={() => setShowInternational(true)}
+            className={`${showInternational ? 'bg-blue-100 border-blue-300 text-blue-700' : 'border-gray-200 text-gray-700'} font-medium`}
+          >
+            <Plane className="h-4 w-4 mr-2" />
+            International
+          </Toggle>
         </div>
         
         <TripCarousel 
-          title={showInternational ? "International Honeymoon Packages" : "Domestic Honeymoon Packages"}
-          description="Carefully curated romantic experiences"
+          title=""
+          description=""
           itemsPerView={4}
         >
           {filteredPackages.length > 0 ? (

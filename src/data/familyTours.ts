@@ -45,7 +45,7 @@ export const familyTours: Trip[] = [
     price: 19999,
     discount: 15,
     duration: '5D/4N',
-    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1553153553-10df0b3f8cef?auto=format&fit=crop&w=800&q=80',
     rating: 4.5,
     reviews: 98,
     familySpecial: true,

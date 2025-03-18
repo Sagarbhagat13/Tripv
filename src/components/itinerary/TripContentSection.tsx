@@ -1,6 +1,7 @@
 
 import TripDetails from '@/components/itinerary/TripDetails';
 import TripBookingCard from '@/components/itinerary/TripBookingCard';
+import { PricingOption } from './booking/PricingTabs';
 
 interface TripContentSectionProps {
   description: string;
@@ -25,6 +26,10 @@ interface TripContentSectionProps {
   tripId?: string;
   tripName: string;
   isCustomizedTrip?: boolean;
+  showBookingForm?: boolean;
+  setShowBookingForm?: (show: boolean) => void;
+  activePricingId?: string;
+  onPricingChange?: (pricingId: string, pricingData: PricingOption) => void;
 }
 
 const TripContentSection = ({
@@ -39,7 +44,11 @@ const TripContentSection = ({
   duration,
   tripId,
   tripName,
-  isCustomizedTrip = false
+  isCustomizedTrip = false,
+  showBookingForm,
+  setShowBookingForm,
+  activePricingId,
+  onPricingChange
 }: TripContentSectionProps) => {
   return (
     <section className="py-8">
@@ -61,6 +70,11 @@ const TripContentSection = ({
             discount={discount}
             duration={duration}
             isCustomizedTrip={isCustomizedTrip}
+            tripName={tripName}
+            isOpen={showBookingForm}
+            onClose={() => setShowBookingForm?.(false)}
+            activePricingId={activePricingId}
+            onPricingChange={onPricingChange}
           />
         </div>
       </div>

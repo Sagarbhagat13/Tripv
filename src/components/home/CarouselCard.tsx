@@ -19,7 +19,9 @@ interface CarouselCardProps {
   bikingPackage?: boolean;
   suvPackage?: boolean;
   longWeekend?: boolean;
+  offbeat?: boolean;
   className?: string;
+  month?: string;
 }
 
 const CarouselCard = ({
@@ -37,10 +39,15 @@ const CarouselCard = ({
   bikingPackage,
   suvPackage,
   longWeekend,
+  offbeat,
   className,
+  month,
 }: CarouselCardProps) => {
+  // Calculate the discounted price
+  const discountedPrice = price - (price * (discount || 0)) / 100;
+  
   return (
-    <Link to={`/trip/${id}`} className="block group">
+    <Link to={`/trip/${id}`} className="block group h-full">
       <div className="relative aspect-[3/4] overflow-hidden rounded-lg">
         <img 
           src={image} 
@@ -58,21 +65,24 @@ const CarouselCard = ({
           bikingPackage={bikingPackage}
           suvPackage={suvPackage}
           longWeekend={longWeekend}
+          offbeat={offbeat}
+          className={className}
+          month={month}
         />
         
-        <div className="absolute bottom-0 left-0 p-6 text-white">
-          <h3 className="text-xl font-bold mb-2">{title}</h3>
+        <div className="absolute bottom-0 left-0 p-3 md:p-4 text-white">
+          <h3 className="text-sm md:text-base font-bold mb-1 line-clamp-2">{title}</h3>
           
           <div className="flex items-center">
-            <MapPin className="h-4 w-4 mr-2" />
-            <span className="text-sm">{location}</span>
+            <MapPin className="h-3.5 w-3.5 mr-1" />
+            <span className="text-xs truncate">{location}</span>
           </div>
           
-          <div className="flex items-baseline mt-2">
-            <span className="text-sm">{duration} • </span>
-            <span className="text-sm font-medium ml-1">₹{price.toLocaleString()}</span>
+          <div className="flex items-baseline mt-1.5">
+            <span className="text-xs">{duration} • </span>
+            <span className="text-xs font-medium ml-1">₹{discountedPrice.toLocaleString()}</span>
             {discount > 0 && (
-              <span className="text-xs text-gray-300 line-through ml-2">₹{(price / (1 - discount/100)).toLocaleString()}</span>
+              <span className="text-xs text-gray-300 line-through ml-1.5">₹{price.toLocaleString()}</span>
             )}
           </div>
         </div>

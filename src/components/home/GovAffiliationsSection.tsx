@@ -6,7 +6,7 @@ const partners = [
   {
     id: 1,
     name: "MSME",
-    logo: "https://smepost.com/wp-content/uploads/2016/03/msme-logo.jpg",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Ministry_of_Micro%2C_Small_and_Medium_Enterprises_logo.svg/1200px-Ministry_of_Micro%2C_Small_and_Medium_Enterprises_logo.svg.png",
   },
   {
     id: 2,
@@ -54,15 +54,9 @@ const GovAffiliationsSection = () => {
   return (
     <section className="py-12 md:py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold text-wanderon-dark mb-2">
-            GOV Affiliations and Partners
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Trusted by government bodies and leading industry partners
-          </p>
-          <Separator className="w-16 h-1 bg-wanderon-primary mx-auto mt-4" />
-        </div>
+        <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">
+          GOV Affiliations and Partners
+        </h2>
         
         <div className="grid grid-cols-3 md:grid-cols-5 gap-6 md:gap-8 items-center justify-items-center">
           {partners.map((partner) => (

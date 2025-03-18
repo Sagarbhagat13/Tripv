@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
+import { useSearchParams } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Banner from '@/components/Banner';
 import Footer from '@/components/Footer';
@@ -13,6 +14,8 @@ import { internationalTours } from '@/data/internationalTours';
 import { honeymoonPackages } from '@/data/honeymoonPackages';
 import { ladakhBikingTrips, ladakhSUVTrips } from '@/data/ladakhTrips';
 import { offBeatTrips } from '@/data/offBeatTrips';
+import { searchTrips } from '@/services/searchService';
+import { getTripData } from '@/services/tripService';
 
 import SearchResults from '@/components/home/SearchResults';
 import LongWeekendSection from '@/components/home/LongWeekendSection';
@@ -34,7 +37,9 @@ import GovAffiliationsSection from '@/components/home/GovAffiliationsSection';
 
 const Index = () => {
   const { toast } = useToast();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [searchResults, setSearchResults] = useState<Trip[] | null>(null);
+  const [currentSearchTerm, setCurrentSearchTerm] = useState<string>("");
   
   const allTrips = [
     ...popularTrips,
@@ -46,27 +51,32 @@ const Index = () => {
     ...offBeatTrips
   ];
   
+  // Check for search parameter on mount and when URL changes
+  useEffect(() => {
+    const searchQuery = searchParams.get('search');
+    if (searchQuery) {
+      handleSearch(searchQuery);
+    } else {
+      setSearchResults(null);
+      setCurrentSearchTerm("");
+    }
+  }, [searchParams]);
+  
   const handleSearch = (query: string) => {
     if (!query.trim()) {
       setSearchResults(null);
+      setCurrentSearchTerm("");
       return;
     }
     
-    const searchTerms = query.toLowerCase().split(' ').filter(term => term.length > 0);
+    setCurrentSearchTerm(query);
     
-    const results = allTrips.filter(trip => {
-      const title = trip.title.toLowerCase();
-      const location = trip.location.toLowerCase();
-      const duration = trip.duration.toLowerCase();
-      const price = trip.price.toString().toLowerCase();
-      const discount = trip.discount ? trip.discount.toString().toLowerCase() : '';
-      
-      const allContent = `${title} ${location} ${duration} ${price} ${discount}`;
-      
-      return searchTerms.some(term => allContent.includes(term));
-    });
-    
+    // Use the searchTrips service function
+    const results = searchTrips(allTrips, query);
     setSearchResults(results);
+    
+    // Update the URL with the search parameter
+    setSearchParams({ search: query });
     
     if (results.length === 0) {
       toast({
@@ -82,7 +92,12 @@ const Index = () => {
     }
   };
   
-  const clearSearchResults = () => setSearchResults(null);
+  const clearSearchResults = () => {
+    setSearchResults(null);
+    setCurrentSearchTerm("");
+    // Remove the search parameter from the URL
+    setSearchParams({});
+  };
   
   return (
     <div className="flex flex-col min-h-screen">
@@ -95,6 +110,7 @@ const Index = () => {
           <SearchResults 
             searchResults={searchResults} 
             clearResults={clearSearchResults} 
+            searchTerm={currentSearchTerm}
           />
         ) : (
           <>

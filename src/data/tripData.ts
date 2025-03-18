@@ -9,3 +9,10 @@ export * from './testimonials';
 export * from './statePackages';
 export * from './honeymoonPackages';
 export * from './internationalTours';
+export * from './stateTrips';
+export * from './worldTrips';
+export * from './offBeatTrips';
+export * from './familyTours';
+export * from './longWeekendTrips';
+export * from './searchKeywords';
+export * from './ladakhTrips';  // Add this line to export Ladakh trips

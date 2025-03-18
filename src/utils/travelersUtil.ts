@@ -92,3 +92,8 @@ export const generateBatchDates = (basePrice: number): {
   
   return batchDates;
 };
+
+// Add formatPrice function for use in MobileFixedBottom
+export const formatPrice = (price: number): string => {
+  return `₹${price.toLocaleString()}`;
+};

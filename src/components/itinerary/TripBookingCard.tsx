@@ -1,126 +1,157 @@
 
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
-import { Calendar, Clock, Users, Phone, Mail, ChevronDown, ChevronUp } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import BatchDatesTable from './BatchDatesTable';
+import BookingForm from './BookingForm';
 import { getFormattedTravelerText, generateBatchDates } from '@/utils/travelersUtil';
+import DateSelectionDialog from './DateSelectionDialog';
+import "@/styles/components/tabs.css";
+
+// Import new components
+import TravelersDisplay from './booking/TravelersDisplay';
+import PricingTabs, { PricingOption } from './booking/PricingTabs';
+import PricingInfo from './booking/PricingInfo';
+import TripDetails from './booking/TripDetails';
+import ActionButtons from './booking/ActionButtons';
+import ContactSection from './booking/ContactSection';
 
 interface TripBookingCardProps {
   price: number;
   discount: number;
   duration: string;
   isCustomizedTrip?: boolean;
+  tripName: string;
+  isOpen?: boolean;
+  onClose?: () => void;
+  activePricingId?: string;
+  onPricingChange?: (pricingId: string, pricingData: PricingOption) => void;
 }
 
-const TripBookingCard = ({ price, discount, duration, isCustomizedTrip = false }: TripBookingCardProps) => {
+const TripBookingCard = ({ 
+  price, 
+  discount, 
+  duration, 
+  isCustomizedTrip = false, 
+  tripName, 
+  isOpen = false, 
+  onClose,
+  activePricingId: externalActivePricingId,
+  onPricingChange
+}: TripBookingCardProps) => {
   const [showDates, setShowDates] = useState(false);
+  const [showBookingForm, setShowBookingForm] = useState(false);
+  const [showDateDialog, setShowDateDialog] = useState(false);
+  const [activePricingId, setActivePricingId] = useState(externalActivePricingId || 'standard');
   const discountedPrice = price - (price * discount) / 100;
   const travelersText = !isCustomizedTrip ? getFormattedTravelerText() : null;
   const batchDates = !isCustomizedTrip ? generateBatchDates(discountedPrice) : [];
   
+  // Define pricing options
+  const pricingOptions: PricingOption[] = [
+    {
+      id: 'standard',
+      title: 'Standard',
+      price: discountedPrice,
+      description: 'Group travel with shared accommodations',
+    },
+    {
+      id: 'comfort',
+      title: 'Comfort',
+      price: Math.round(discountedPrice * 1.2),
+      description: 'Upgraded hotels and private transfers',
+      isPopular: true,
+    },
+    {
+      id: 'premium',
+      title: 'Premium',
+      price: Math.round(discountedPrice * 1.5),
+      description: 'Luxury accommodations and exclusive experiences',
+    },
+    {
+      id: 'customized',
+      title: 'Custom',
+      price: Math.round(discountedPrice * 1.8),
+      description: 'Fully customized itinerary and services',
+    },
+  ];
+
+  // Sync with external active pricing ID if provided
+  useEffect(() => {
+    if (externalActivePricingId) {
+      setActivePricingId(externalActivePricingId);
+    }
+  }, [externalActivePricingId]);
+
   const toggleDates = () => {
     setShowDates(prev => !prev);
   };
   
+  const openBookingForm = () => {
+    setShowBookingForm(true);
+  };
+  
+  const closeBookingForm = () => {
+    setShowBookingForm(false);
+  };
+
+  const openDateDialog = () => {
+    setShowDateDialog(true);
+  };
+
+  const closeDateDialog = () => {
+    setShowDateDialog(false);
+  };
+
+  const handlePricingSelect = (pricingId: string) => {
+    setActivePricingId(pricingId);
+    
+    // Propagate pricing change to parent component if callback is provided
+    const selectedPricing = pricingOptions.find(option => option.id === pricingId);
+    if (selectedPricing && onPricingChange) {
+      onPricingChange(pricingId, selectedPricing);
+    }
+  };
+
+  // Find the active pricing option
+  const activePricing = pricingOptions.find(option => option.id === activePricingId) || pricingOptions[0];
+  
   return (
     <div className="w-full lg:w-1/3">
       <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-6 sticky top-24">
-        {!isCustomizedTrip && travelersText && (
-          <div className="mb-4">
-            <div className="flex items-center text-gray-600 mb-4">
-              <Users className="h-5 w-5 text-tripvidya-primary mr-2" />
-              <p className="italic text-sm">{travelersText}</p>
-            </div>
-          </div>
-        )}
+        <TravelersDisplay travelersText={travelersText} />
         
-        <div className="flex items-baseline">
-          <span className="text-2xl font-bold text-tripvidya-primary">₹{discountedPrice.toLocaleString()}</span>
-          {discount > 0 && (
-            <span className="text-base text-gray-500 line-through ml-2">₹{price.toLocaleString()}</span>
-          )}
-          {discount > 0 && (
-            <span className="ml-2 bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded">
-              {discount}% OFF
-            </span>
-          )}
-        </div>
+        <PricingTabs 
+          pricingOptions={pricingOptions} 
+          activePricingId={activePricingId} 
+          onPricingSelect={handlePricingSelect} 
+        />
         
-        <div className="space-y-4 mb-6">
-          <div className="flex items-center justify-between py-2 border-b border-gray-200">
-            <div className="flex items-center">
-              <Calendar className="h-5 w-5 text-tripvidya-primary mr-2" />
-              <span className="text-gray-700">Duration</span>
-            </div>
-            <span className="font-medium">{duration}</span>
-          </div>
-          
-          <div className="flex items-center justify-between py-2 border-b border-gray-200">
-            <div className="flex items-center">
-              <Clock className="h-5 w-5 text-tripvidya-primary mr-2" />
-              <span className="text-gray-700">Departure</span>
-            </div>
-            <span className="font-medium">Multiple dates</span>
-          </div>
-          
-          <div className="flex items-center justify-between py-2 border-b border-gray-200">
-            <div className="flex items-center">
-              <Users className="h-5 w-5 text-tripvidya-primary mr-2" />
-              <span className="text-gray-700">Group Size</span>
-            </div>
-            <span className="font-medium">12-15 People</span>
-          </div>
-        </div>
+        <PricingInfo activePricing={activePricing} discount={discount} />
+        
+        <TripDetails duration={duration} />
         
         {!isCustomizedTrip && showDates && <BatchDatesTable batchDates={batchDates} />}
         
-        <Button 
-          size="lg" 
-          className="w-full bg-tripvidya-primary hover:bg-tripvidya-primary/90 mb-4"
-        >
-          Book Now
-        </Button>
+        <ActionButtons
+          onBookingFormOpen={openBookingForm}
+          onDateDialogOpen={openDateDialog}
+        />
         
-        <Button 
-          variant="outline" 
-          size="lg" 
-          className="w-full border-tripvidya-primary text-tripvidya-primary hover:bg-tripvidya-primary hover:text-white flex items-center justify-center"
-          onClick={toggleDates}
-        >
-          Check Available Dates
-          {showDates ? (
-            <ChevronUp className="ml-2 h-5 w-5" />
-          ) : (
-            <ChevronDown className="ml-2 h-5 w-5" />
-          )}
-        </Button>
-        
-        <Separator className="my-6" />
-        
-        <div className="text-center">
-          <p className="text-gray-600 mb-4">Have questions about this trip?</p>
-          <div className="flex justify-center space-x-4">
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="border-tripvidya-primary text-tripvidya-primary hover:bg-tripvidya-primary hover:text-white"
-            >
-              <Phone className="h-4 w-4 mr-2" />
-              Call Us
-            </Button>
-            
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="border-tripvidya-primary text-tripvidya-primary hover:bg-tripvidya-primary hover:text-white"
-            >
-              <Mail className="h-4 w-4 mr-2" />
-              Email Us
-            </Button>
-          </div>
-        </div>
+        <ContactSection />
       </div>
+      
+      <BookingForm 
+        isOpen={showBookingForm} 
+        onClose={closeBookingForm} 
+        batchDates={batchDates} 
+        tripName={tripName}
+      />
+
+      <DateSelectionDialog
+        isOpen={showDateDialog}
+        onClose={closeDateDialog}
+        batchDates={batchDates}
+        tripName={tripName}
+      />
     </div>
   );
 };

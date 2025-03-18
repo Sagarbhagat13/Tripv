@@ -10,6 +10,7 @@ interface CategoryCardProps {
   link: string;
   className?: string;
   itineraryLink?: boolean;
+  suggestedItinerary?: boolean;
 }
 
 const CategoryCard = ({
@@ -19,9 +20,17 @@ const CategoryCard = ({
   link,
   className,
   itineraryLink,
+  suggestedItinerary,
 }: CategoryCardProps) => {
   const [imgError, setImgError] = useState(false);
-  const actualLink = itineraryLink ? `/day-itinerary/${link.split('/').pop()}` : link;
+  
+  // Determine the appropriate link based on props
+  let actualLink = link;
+  if (itineraryLink) {
+    actualLink = `/day-itinerary/${link.split('/').pop()}`;
+  } else if (suggestedItinerary) {
+    actualLink = `/suggested-trip/${link.split('/').pop()}`;
+  }
   
   // Fallback image if the original image fails to load
   const fallbackImage = "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=80";
@@ -30,7 +39,7 @@ const CategoryCard = ({
     <Link
       to={actualLink}
       className={cn(
-        "group relative overflow-hidden rounded-lg block h-60 trip-card-shadow",
+        "group relative overflow-hidden rounded-lg block h-full trip-card-shadow",
         className
       )}
     >
@@ -41,10 +50,10 @@ const CategoryCard = ({
         onError={() => setImgError(true)}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-      <div className="absolute bottom-0 left-0 p-5 w-full">
-        <h3 className="text-xl font-bold text-white mb-1">{title}</h3>
+      <div className="absolute bottom-0 left-0 p-4 w-full">
+        <h3 className="text-lg font-bold text-white mb-0.5">{title}</h3>
         {subtitle && (
-          <p className="text-white/80 text-sm">{subtitle}</p>
+          <p className="text-white/80 text-xs">{subtitle}</p>
         )}
       </div>
     </Link>

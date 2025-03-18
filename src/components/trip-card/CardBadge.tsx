@@ -1,5 +1,5 @@
 
-import { MapPin, Gift, Plane, Users, Bike, Car, Calendar, Clock3 } from 'lucide-react';
+import { MapPin, Gift, Plane, Users, Bike, Car, Calendar, Clock3, Compass } from 'lucide-react';
 
 interface CardBadgeProps {
   discount?: number;
@@ -10,7 +10,9 @@ interface CardBadgeProps {
   bikingPackage?: boolean;
   suvPackage?: boolean;
   longWeekend?: boolean;
+  offbeat?: boolean;
   className?: string;
+  month?: string;
 }
 
 export const CardBadge = ({ 
@@ -22,10 +24,31 @@ export const CardBadge = ({
   bikingPackage,
   suvPackage,
   longWeekend,
-  className
+  offbeat,
+  className,
+  month
 }: CardBadgeProps) => {
   // Check if this is a short trip based on className
   const isShortTrip = className?.includes('short-trip');
+  
+  // Display month-specific badge if month is provided
+  if (month) {
+    return (
+      <div className="absolute top-3 left-3 bg-gradient-to-r from-amber-500 to-amber-600 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center">
+        <Calendar className="h-3 w-3 mr-1" />
+        {month}
+      </div>
+    );
+  }
+  
+  if (offbeat) {
+    return (
+      <div className="absolute top-3 left-3 bg-gradient-to-r from-teal-500 to-emerald-500 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center">
+        <Compass className="h-3 w-3 mr-1" />
+        Off-Beat
+      </div>
+    );
+  }
   
   if (longWeekend) {
     // Show different badge based on short trip or long weekend
@@ -100,9 +123,9 @@ export const CardBadge = ({
     );
   }
   
-  if (discount > 0) {
+  if (discount && discount > 0) {
     return (
-      <div className="absolute top-3 left-3 bg-wanderon-primary text-white px-2 py-1 rounded text-sm font-medium">
+      <div className="absolute top-3 left-3 bg-gradient-to-r from-red-500 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-medium">
         {discount}% OFF
       </div>
     );

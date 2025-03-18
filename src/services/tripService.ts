@@ -1,4 +1,3 @@
-
 // In a real application, this would fetch data from an API
 // For now, we're using mock data
 
@@ -104,6 +103,13 @@ export const getTripData = (id: string) => {
         question: 'Can I customize this itinerary?',
         answer: 'For group departures, we follow the set itinerary. However, for private bookings, we can customize the itinerary according to your preferences.',
       },
+    ],
+    placesCovered: [
+      'Delhi',
+      'Manali',
+      'Solang Valley',
+      'Rohtang Pass',
+      'Old Manali'
     ],
   };
 };

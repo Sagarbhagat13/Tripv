@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Mail, Send, Phone, User } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { sendFormSubmissionEmail } from '@/services/emailService';
 
 interface EnquiryFormProps {
   tripId?: string;
@@ -28,12 +29,25 @@ const EnquiryForm = ({ tripId, tripName }: EnquiryFormProps) => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Send email notification with form data
+      await sendFormSubmissionEmail({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        additionalData: {
+          tripId,
+          tripName
+        },
+        pageUrl: window.location.href,
+        formType: 'Trip Enquiry'
+      });
+      
       toast({
         title: "Enquiry Submitted",
         description: `Thank you for your interest in ${tripName}. We'll get back to you soon!`,
@@ -46,9 +60,15 @@ const EnquiryForm = ({ tripId, tripName }: EnquiryFormProps) => {
         phone: '',
         message: '',
       });
-      
+    } catch (error) {
+      toast({
+        title: "Something went wrong!",
+        description: "We couldn't send your inquiry. Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (

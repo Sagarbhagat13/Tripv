@@ -24,6 +24,7 @@ export const CompactTripCard = ({
   bikingPackage,
   suvPackage,
   longWeekend,
+  offbeat,
 }: TripCardProps) => {
   const discountedPrice = price - (price * discount) / 100;
   
@@ -44,7 +45,7 @@ export const CompactTripCard = ({
         <img 
           src={image} 
           alt={title} 
-          className="w-full h-48 object-cover"
+          className="w-full aspect-[3/4] object-cover" /* Updated to match aspect ratio */
         />
         <FavoriteButton />
         <CardBadge 
@@ -56,6 +57,7 @@ export const CompactTripCard = ({
           bikingPackage={badgeBikingPackage}
           suvPackage={badgeSUVPackage}
           longWeekend={longWeekend}
+          offbeat={offbeat}
           className={className}
         />
       </div>
@@ -74,6 +76,7 @@ export const CompactTripCard = ({
         honeymoonSpecial={honeymoonSpecial}
         international={international}
         familySpecial={familySpecial}
+        offbeat={offbeat}
       />
     </Link>
   );

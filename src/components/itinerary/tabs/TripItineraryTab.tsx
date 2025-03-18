@@ -1,7 +1,6 @@
 
 import { useState } from 'react';
 import { ChevronDown, ChevronUp, Check } from 'lucide-react';
-import EnquiryForm from '@/components/EnquiryForm';
 
 interface ItineraryDay {
   day: number;
@@ -20,7 +19,6 @@ interface TripItineraryTabProps {
 
 const TripItineraryTab = ({ itinerary, tripId, tripName }: TripItineraryTabProps) => {
   const [expandedDays, setExpandedDays] = useState<number[]>([1]);
-  const [showEnquiryForm, setShowEnquiryForm] = useState(false);
   
   const toggleDayExpand = (day: number) => {
     setExpandedDays(prev => 
@@ -89,20 +87,6 @@ const TripItineraryTab = ({ itinerary, tripId, tripName }: TripItineraryTabProps
             )}
           </div>
         ))}
-      </div>
-      
-      <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 mt-8">
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-xl font-bold text-wanderon-dark">Want to Know More?</h3>
-          <button 
-            onClick={() => setShowEnquiryForm(!showEnquiryForm)}
-            className="text-tripvidya-primary hover:text-tripvidya-primary/80 text-sm font-medium"
-          >
-            {showEnquiryForm ? 'Hide Form' : 'Show Form'}
-          </button>
-        </div>
-        
-        {showEnquiryForm && <EnquiryForm tripId={tripId} tripName={tripName} />}
       </div>
     </div>
   );

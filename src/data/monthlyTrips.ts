@@ -19,7 +19,7 @@ export const monthlyTrips: MonthlyTrips[] = [
         price: 19999,
         discount: 15,
         duration: '5D/4N',
-        image: 'https://images.unsplash.com/photo-1543039625-14cbd3802e7d?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1599661046289-e31897ec8548?auto=format&fit=crop&w=800&q=80',
         rating: 4.7,
         reviews: 123
       },
@@ -30,7 +30,7 @@ export const monthlyTrips: MonthlyTrips[] = [
         price: 21999,
         discount: 10,
         duration: '4D/3N',
-        image: 'https://images.unsplash.com/photo-1543039625-14cbd3802e7d?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=800&q=80',
         rating: 4.8,
         reviews: 98
       },
@@ -41,19 +41,8 @@ export const monthlyTrips: MonthlyTrips[] = [
         price: 23499,
         discount: 8,
         duration: '6D/5N',
-        image: 'https://images.unsplash.com/photo-1543039625-14cbd3802e7d?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1602157729150-3edc9cb4c4c6?auto=format&fit=crop&w=800&q=80',
         rating: 4.9,
-        reviews: 145
-      },
-      {
-        id: 'jan-4',
-        title: 'Valley of Flowers Trek',
-        location: 'Uttarakhand',
-        price: 24999,
-        discount: 15,
-        duration: '7D/6N',
-        image: 'https://images.unsplash.com/photo-1543039625-14cbd3802e7d?auto=format&fit=crop&w=800&q=80',
-        rating: 4.8,
         reviews: 145
       }
     ]
@@ -93,17 +82,6 @@ export const monthlyTrips: MonthlyTrips[] = [
         image: 'https://images.unsplash.com/photo-1590080748465-1ef694f45478?auto=format&fit=crop&w=800&q=80',
         rating: 4.7,
         reviews: 112
-      },
-      {
-        id: 'feb-4',
-        title: 'Valley of Flowers Trek',
-        location: 'Uttarakhand',
-        price: 24999,
-        discount: 15,
-        duration: '7D/6N',
-        image: 'https://images.unsplash.com/photo-1543039625-14cbd3802e7d?auto=format&fit=crop&w=800&q=80',
-        rating: 4.8,
-        reviews: 145
       }
     ]
   },
@@ -142,17 +120,6 @@ export const monthlyTrips: MonthlyTrips[] = [
         image: 'https://images.unsplash.com/photo-1626016352668-5c5bdbe641c4?auto=format&fit=crop&w=800&q=80',
         rating: 4.7,
         reviews: 109
-      },
-      {
-        id: 'mar-4',
-        title: 'Valley of Flowers Trek',
-        location: 'Uttarakhand',
-        price: 24999,
-        discount: 15,
-        duration: '7D/6N',
-        image: 'https://images.unsplash.com/photo-1543039625-14cbd3802e7d?auto=format&fit=crop&w=800&q=80',
-        rating: 4.8,
-        reviews: 145
       }
     ]
   },
@@ -192,18 +159,6 @@ export const monthlyTrips: MonthlyTrips[] = [
         rating: 4.5,
         reviews: 98
       }
-      ,
-      {
-        id: 'apr-4',
-        title: 'Valley of Flowers Trek',
-        location: 'Uttarakhand',
-        price: 24999,
-        discount: 15,
-        duration: '7D/6N',
-        image: 'https://images.unsplash.com/photo-1543039625-14cbd3802e7d?auto=format&fit=crop&w=800&q=80',
-        rating: 4.8,
-        reviews: 145
-      }
     ]
   },
   {
@@ -241,17 +196,6 @@ export const monthlyTrips: MonthlyTrips[] = [
         image: 'https://images.unsplash.com/photo-1582560475093-ba66accbc953?auto=format&fit=crop&w=800&q=80',
         rating: 4.7,
         reviews: 89
-      },
-      {
-        id: 'may-4',
-        title: 'Valley of Flowers Trek',
-        location: 'Uttarakhand',
-        price: 24999,
-        discount: 15,
-        duration: '7D/6N',
-        image: 'https://images.unsplash.com/photo-1543039625-14cbd3802e7d?auto=format&fit=crop&w=800&q=80',
-        rating: 4.8,
-        reviews: 145
       }
     ]
   },

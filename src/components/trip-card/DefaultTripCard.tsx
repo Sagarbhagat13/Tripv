@@ -23,6 +23,7 @@ export const DefaultTripCard = ({
   familySpecial,
   bikingPackage,
   suvPackage,
+  offbeat,
 }: TripCardProps) => {
   const discountedPrice = price - (price * discount) / 100;
   
@@ -44,7 +45,7 @@ export const DefaultTripCard = ({
           <img 
             src={image} 
             alt={title} 
-            className="w-full h-64 object-cover"
+            className="w-full aspect-[3/4] object-cover" /* Updated to match aspect ratio */
           />
           <FavoriteButton />
           <CardBadge 
@@ -55,6 +56,7 @@ export const DefaultTripCard = ({
             familySpecial={familySpecial}
             bikingPackage={badgeBikingPackage}
             suvPackage={badgeSUVPackage}
+            offbeat={offbeat}
           />
           
           {familySpecial && (
@@ -76,6 +78,10 @@ export const DefaultTripCard = ({
           {badgeSUVPackage && (
             <div className="absolute inset-0 bg-gradient-to-t from-blue-500/30 to-transparent"></div>
           )}
+          
+          {offbeat && (
+            <div className="absolute inset-0 bg-gradient-to-t from-teal-500/30 to-transparent"></div>
+          )}
         </div>
       </Link>
       
@@ -93,6 +99,7 @@ export const DefaultTripCard = ({
         honeymoonSpecial={honeymoonSpecial}
         international={international}
         familySpecial={familySpecial}
+        offbeat={offbeat}
       />
     </div>
   );

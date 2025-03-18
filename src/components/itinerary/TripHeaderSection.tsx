@@ -9,6 +9,7 @@ interface TripHeaderSectionProps {
   duration: string;
   rating: number;
   reviews: number;
+  places?: string[];
   isFavorite: boolean;
   toggleFavorite: () => void;
   handleShare: () => void;
@@ -20,6 +21,7 @@ const TripHeaderSection = ({
   duration,
   rating,
   reviews,
+  places,
   isFavorite,
   toggleFavorite,
   handleShare
@@ -31,6 +33,7 @@ const TripHeaderSection = ({
       duration={duration}
       rating={rating}
       reviews={reviews}
+      places={places}
       isFavorite={isFavorite}
       toggleFavorite={toggleFavorite}
       handleShare={handleShare}

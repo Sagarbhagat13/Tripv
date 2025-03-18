@@ -30,12 +30,9 @@ const Banner = ({ onSearch }: { onSearch: (query: string) => void }) => {
       <BannerSlider images={bannerImages} />
       
       <div className="relative container mx-auto h-full flex flex-col justify-center items-center px-4 text-center">
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-in drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)]">
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-10 animate-fade-in drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)]">
           Discover Incredible Destinations
         </h1>
-        <p className="text-lg md:text-xl text-white mb-10 max-w-3xl animate-fade-in opacity-100 drop-shadow-[0_1px_3px_rgba(0,0,0,0.7)]">
-          Experience the perfect balance of adventure, fun and relaxation with our curated trips
-        </p>
         
         <BannerSearchBar onSearch={onSearch} allTrips={allTrips} />
         

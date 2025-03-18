@@ -11,9 +11,11 @@ const WeekendTripsSection = () => {
   return (
     <section className="py-12 bg-white">
       <div className="container mx-auto px-4">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Short Trips</h2>
+        
         <TripCarousel 
-          title="Short Trips"
-          description="Perfect getaways for quick breaks and weekend escapes"
+          title=""
+          description=""
           itemsPerView={4}
           className="short-trip"
         >

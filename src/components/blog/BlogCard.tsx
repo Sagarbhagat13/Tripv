@@ -24,9 +24,9 @@ const BlogCard = ({
   slug,
 }: BlogCardProps) => {
   return (
-    <Link to={`/blog/${slug}`} className="group">
-      <div className="rounded-lg overflow-hidden bg-white shadow-md transition-all duration-300 hover:shadow-lg">
-        <div className="relative h-48 overflow-hidden">
+    <Link to={`/blog/${slug}`} className="group h-full">
+      <div className="rounded-lg overflow-hidden bg-white shadow-md transition-all duration-300 hover:shadow-lg h-full flex flex-col">
+        <div className="relative aspect-[3/4] overflow-hidden">
           <img 
             src={image} 
             alt={title}
@@ -38,32 +38,34 @@ const BlogCard = ({
             </span>
           </div>
         </div>
-        <div className="p-4">
-          <h3 className="text-lg font-bold text-wanderon-dark mb-2 line-clamp-2">{title}</h3>
-          <p className="text-wanderon-gray text-sm mb-4 line-clamp-2">{description}</p>
+        <div className="p-5 flex flex-col flex-grow">
+          <h3 className="text-lg font-bold text-wanderon-dark mb-3 line-clamp-2">{title}</h3>
+          <p className="text-wanderon-gray text-sm mb-4 line-clamp-3">{description}</p>
           
-          {(location || temperature || month) && (
-            <div className="flex flex-wrap gap-3 text-sm text-wanderon-gray">
-              {location && (
-                <div className="flex items-center gap-1">
-                  <MapPin className="h-4 w-4" />
-                  <span>{location}</span>
-                </div>
-              )}
-              {temperature && (
-                <div className="flex items-center gap-1">
-                  <Thermometer className="h-4 w-4" />
-                  <span>{temperature}</span>
-                </div>
-              )}
-              {month && (
-                <div className="flex items-center gap-1">
-                  <CalendarDays className="h-4 w-4" />
-                  <span>{month}</span>
-                </div>
-              )}
-            </div>
-          )}
+          <div className="mt-auto">
+            {(location || temperature || month) && (
+              <div className="flex flex-wrap gap-3 text-xs text-wanderon-gray pt-3 border-t border-gray-100">
+                {location && (
+                  <div className="flex items-center gap-1">
+                    <MapPin className="h-3 w-3" />
+                    <span>{location}</span>
+                  </div>
+                )}
+                {temperature && (
+                  <div className="flex items-center gap-1">
+                    <Thermometer className="h-3 w-3" />
+                    <span>{temperature}</span>
+                  </div>
+                )}
+                {month && (
+                  <div className="flex items-center gap-1">
+                    <CalendarDays className="h-3 w-3" />
+                    <span>{month}</span>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </Link>

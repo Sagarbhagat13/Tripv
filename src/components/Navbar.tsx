@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useLocation } from 'react-router-dom';
 
 // Import components
 import Logo from './navbar/Logo';
@@ -18,6 +19,13 @@ const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const isMobile = useIsMobile();
   const overlayRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+  
+  // Check if we're on the itinerary page
+  const isItineraryPage = location.pathname.includes('/trip/') || 
+                         location.pathname.includes('/custom-trip/') || 
+                         location.pathname.includes('/day-itinerary/');
   
   const toggleMenu = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -29,19 +37,31 @@ const Navbar = () => {
   // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (isMenuOpen && overlayRef.current && overlayRef.current.contains(event.target as Node)) {
+      // Close menu if clicking anywhere outside nav elements
+      if (
+        isMenuOpen && 
+        navRef.current && 
+        !navRef.current.contains(event.target as Node) &&
+        overlayRef.current && 
+        !overlayRef.current.contains(event.target as Node)
+      ) {
         setIsMenuOpen(false);
       }
     };
     
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isMenuOpen]);
   
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
         setIsScrolled(true);
+        
+        // Close mobile menu on scroll
+        if (isMenuOpen && isMobile) {
+          setIsMenuOpen(false);
+        }
       } else {
         setIsScrolled(false);
       }
@@ -49,27 +69,32 @@ const Navbar = () => {
     
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isMenuOpen, isMobile]);
+  
+  // Add effect to scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
   
   return (
     <header className={cn(
       "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-      isScrolled ? "bg-white shadow-md py-2" : "bg-transparent py-4"
+      isScrolled || isItineraryPage ? "bg-white shadow-md py-2" : "bg-transparent py-4"
     )}>
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between" ref={navRef}>
           {/* Logo */}
           <Logo />
           
           {/* Desktop Navigation */}
-          <NavLinks isScrolled={isScrolled} links={navLinks} />
+          <NavLinks isScrolled={isScrolled || isItineraryPage} links={navLinks} />
           
           {/* Desktop Action Buttons */}
-          <DesktopActions isScrolled={isScrolled} toggleSearch={toggleSearch} />
+          <DesktopActions isScrolled={isScrolled || isItineraryPage} toggleSearch={toggleSearch} />
           
           {/* Mobile Menu Button */}
           <MobileActions 
-            isScrolled={isScrolled} 
+            isScrolled={isScrolled || isItineraryPage} 
             isMenuOpen={isMenuOpen} 
             toggleMenu={toggleMenu} 
             toggleSearch={toggleSearch} 

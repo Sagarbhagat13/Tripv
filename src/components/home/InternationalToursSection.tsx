@@ -11,9 +11,11 @@ const InternationalToursSection = () => {
   return (
     <section className="py-12 bg-gradient-to-r from-[#D3E4FD] to-[#E5DEFF]">
       <div className="container mx-auto px-4">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">International Tours</h2>
+        
         <TripCarousel 
-          title="International Tours" 
-          description="Explore the world with our carefully curated international packages"
+          title=""
+          description=""
           itemsPerView={4}
         >
           {internationalTours.map((trip) => (

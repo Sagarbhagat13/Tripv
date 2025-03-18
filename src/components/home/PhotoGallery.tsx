@@ -1,8 +1,14 @@
 
 import { useState } from 'react';
-import { cn } from '@/lib/utils';
-import { ChevronLeft, ChevronRight, Instagram } from 'lucide-react';
+import { Instagram } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselPrevious, 
+  CarouselNext 
+} from "@/components/ui/carousel";
 
 // Photo data with unsplash images
 export const galleryPhotos = [
@@ -57,112 +63,92 @@ export const galleryPhotos = [
 ];
 
 const PhotoGallery = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const isMobile = useIsMobile();
   
-  // Number of photos to show at once
-  const visibleCount = isMobile ? 3 : 5;
-  
-  const nextSlide = () => {
-    setActiveIndex((prevIndex) => 
-      prevIndex + 1 >= galleryPhotos.length ? 0 : prevIndex + 1
-    );
-  };
-  
-  const prevSlide = () => {
-    setActiveIndex((prevIndex) => 
-      prevIndex - 1 < 0 ? galleryPhotos.length - 1 : prevIndex - 1
-    );
-  };
-  
-  // Create an array of visible photos based on the active index
-  const getVisiblePhotos = () => {
-    const result = [];
-    for (let i = 0; i < visibleCount; i++) {
-      const index = (activeIndex + i) % galleryPhotos.length;
-      result.push(galleryPhotos[index]);
-    }
-    return result;
-  };
-  
   return (
-    <section className="py-12 md:py-16 bg-white">
+    <section className="py-6 md:py-10 bg-white">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 md:mb-8">
-          <div>
-            <h2 className="text-2xl font-bold text-wanderon-dark mb-2">Travel Moments</h2>
-            <p className="text-wanderon-gray">Captured by our wanderers</p>
-          </div>
-          <div className="flex items-center gap-4 mt-4 md:mt-0">
-            <a 
-              href="https://www.instagram.com/wanderon.in/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-wanderon-primary hover:text-wanderon-dark transition-colors"
-            >
-              <Instagram size={18} />
-              <span className="font-medium">@wanderon.in</span>
-            </a>
-            <div className="flex items-center gap-2">
-              <button 
-                onClick={prevSlide}
-                className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-wanderon-primary hover:text-white transition-colors"
-              >
-                <ChevronLeft size={20} />
-              </button>
-              <button 
-                onClick={nextSlide}
-                className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-wanderon-primary hover:text-white transition-colors"
-              >
-                <ChevronRight size={20} />
-              </button>
-            </div>
-          </div>
+        <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">Travel Moments</h2>
+        
+        <div className="flex justify-center items-center gap-3 mb-4">
+          <a 
+            href="https://www.instagram.com/wanderon.in/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-wanderon-primary hover:text-wanderon-dark transition-colors duration-200"
+          >
+            <Instagram size={16} />
+            <span className="font-medium text-sm">@wanderon.in</span>
+          </a>
         </div>
         
         {isMobile ? (
-          // Mobile layout with fixed height images
-          <div className="grid grid-cols-1 gap-4">
-            {getVisiblePhotos().map((photo) => (
-              <div 
-                key={photo.id}
-                className="relative rounded-lg overflow-hidden h-56"
-              >
-                <img 
-                  src={photo.url} 
-                  alt={photo.alt}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent text-white">
-                  <p className="text-sm font-medium">{photo.location}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          // Mobile layout with simple carousel - reduced sizes
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+              dragFree: true,
+              duration: 0,
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {galleryPhotos.map((photo) => (
+                <CarouselItem key={photo.id} className="basis-3/4 md:basis-1/2 lg:basis-1/3">
+                  <div className="relative rounded-lg overflow-hidden h-52">
+                    <img 
+                      src={photo.url} 
+                      alt={photo.alt}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/70 to-transparent text-white">
+                      <p className="text-xs font-medium">{photo.location}</p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="hidden md:flex justify-end mt-3">
+              <CarouselPrevious className="relative static left-0 right-auto translate-y-0 mr-2 h-8 w-8" />
+              <CarouselNext className="relative static right-0 left-auto translate-y-0 h-8 w-8" />
+            </div>
+          </Carousel>
         ) : (
-          // Desktop layout with the existing grid
-          <div className="hidden md:grid grid-cols-5 gap-4">
-            {getVisiblePhotos().map((photo, index) => (
-              <div 
-                key={photo.id}
-                className={cn(
-                  "relative overflow-hidden rounded-lg transition-all duration-300",
-                  index === 2 ? "col-span-1 row-span-2 h-auto" : "h-64",
-                  index === 0 ? "col-span-2" : "",
-                  index === 1 ? "col-span-2" : ""
-                )}
-              >
-                <img 
-                  src={photo.url} 
-                  alt={photo.alt}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent text-white">
-                  <p className="text-sm font-medium">{photo.location}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          // Desktop layout with reduced carousel
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+              dragFree: true,
+              duration: 0,
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {galleryPhotos.map((photo) => (
+                <CarouselItem key={photo.id} className="basis-full md:basis-1/2 lg:basis-1/4">
+                  <div className="relative rounded-lg overflow-hidden h-56 mx-1.5">
+                    <img 
+                      src={photo.url} 
+                      alt={photo.alt}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent text-white">
+                      <p className="text-xs font-medium">{photo.location}</p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="flex justify-end mt-3">
+              <CarouselPrevious className="relative static left-0 right-auto translate-y-0 mr-2 h-8 w-8" />
+              <CarouselNext className="relative static right-0 left-auto translate-y-0 h-8 w-8" />
+            </div>
+          </Carousel>
         )}
       </div>
     </section>

@@ -10,6 +10,7 @@ interface TripHeaderProps {
   rating: number;
   reviews: number;
   isFavorite: boolean;
+  places?: string[];
   toggleFavorite: () => void;
   handleShare: () => void;
 }
@@ -21,6 +22,7 @@ const TripHeader = ({
   rating, 
   reviews, 
   isFavorite, 
+  places,
   toggleFavorite, 
   handleShare 
 }: TripHeaderProps) => {
@@ -33,7 +35,7 @@ const TripHeader = ({
       
       <h1 className="text-3xl font-bold text-tripvidya-dark mb-3">{title}</h1>
       
-      <div className="flex flex-wrap items-center gap-4">
+      <div className="flex flex-wrap items-center gap-4 mb-4">
         <div className="flex items-center">
           <Calendar className="h-4 w-4 text-gray-500 mr-1" />
           <span className="text-sm text-gray-600">{duration}</span>
@@ -67,6 +69,23 @@ const TripHeader = ({
           </Button>
         </div>
       </div>
+      
+      {places && places.length > 0 && (
+        <div className="mt-2">
+          <h3 className="text-sm font-medium text-gray-700 mb-2">Places Covered:</h3>
+          <div className="flex flex-wrap gap-2">
+            {places.map((place) => (
+              <div 
+                key={place} 
+                className="bg-gray-100 px-3 py-1 rounded-full flex items-center text-sm"
+              >
+                <MapPin className="h-3 w-3 text-tripvidya-primary mr-1" />
+                <span>{place}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

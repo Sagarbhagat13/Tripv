@@ -1,8 +1,11 @@
 
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { MapPin } from 'lucide-react';
+import { MapPin, X } from 'lucide-react';
 import NavLinks from './NavLinks';
+import { useState } from 'react';
+import EnquiryFormDialog from '@/components/enquiry/EnquiryFormDialog';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -12,26 +15,68 @@ interface MobileMenuProps {
 }
 
 const MobileMenu = ({ isOpen, overlayRef, navLinks, onClose }: MobileMenuProps) => {
+  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    
+    // Prevent body scrolling when menu is open
+    document.body.style.overflow = 'hidden';
+    
+    const handleScroll = () => {
+      onClose();
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      // Restore scrolling when component unmounts
+      document.body.style.overflow = '';
+    };
+  }, [isOpen, onClose]);
+  
   if (!isOpen) return null;
+  
+  const openEnquiryForm = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsEnquiryOpen(true);
+  };
+
+  const closeEnquiryForm = () => {
+    setIsEnquiryOpen(false);
+  };
   
   return (
     <div 
       ref={overlayRef}
-      className="lg:hidden fixed inset-0 z-40 bg-white/95 backdrop-blur-md animate-fade-in overflow-hidden"
+      className="lg:hidden fixed inset-0 z-50 bg-white/95 backdrop-blur-md animate-fade-in overflow-auto"
       style={{ 
-        height: '75vh', 
+        height: '100vh', 
         width: '75vw',
         right: 0,
         left: 'auto'
       }}
     >
-      <div className="container mx-auto px-6 py-6 h-full overflow-y-auto">
+      <div className="container mx-auto px-6 py-6 h-full">
+        <div className="flex justify-end mb-4">
+          <Button 
+            onClick={onClose}
+            variant="ghost" 
+            size="sm"
+            className="rounded-full p-2 text-tripvidya-dark hover:bg-tripvidya-light"
+          >
+            <X className="h-6 w-6" />
+          </Button>
+        </div>
+        
         <NavLinks isScrolled={true} links={navLinks} mobile={true} onClick={onClose} />
         
         <div className="pt-4">
           <Button 
             variant="default"
             className="w-full bg-tripvidya-primary hover:bg-tripvidya-primary/90 h-10 text-sm rounded-xl"
+            onClick={openEnquiryForm}
           >
             <MapPin className="h-4 w-4 mr-2" />
             Plan My Trip
@@ -50,6 +95,8 @@ const MobileMenu = ({ isOpen, overlayRef, navLinks, onClose }: MobileMenuProps) 
           </a>
         </div>
       </div>
+
+      <EnquiryFormDialog isOpen={isEnquiryOpen} onClose={closeEnquiryForm} />
     </div>
   );
 };

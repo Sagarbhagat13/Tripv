@@ -11,9 +11,17 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About */}
           <div>
-            <h3 className="text-xl font-bold mb-4">TripVidya</h3>
+            <div className="flex items-center mb-4">
+              <img 
+                src="/lovable-uploads/2f2cf992-ad1d-47ad-9f83-81862be69fc9.png" 
+                alt="Awaiting Adventures Logo" 
+                className="h-10 w-10 mr-2 logo-image"
+                style={{ filter: "invert(55%) sepia(95%) saturate(1752%) hue-rotate(322deg) brightness(99%) contrast(96%)" }}
+              />
+              <h3 className="text-xl font-bold">Awaiting Adventures</h3>
+            </div>
             <p className="text-gray-300 mb-4">
-              TripVidya is your one-stop destination for hassle-free travel experiences 
+              Awaiting Adventures is your one-stop destination for hassle-free travel experiences 
               across India and beyond. We craft memorable trips that balance adventure, 
               comfort, and authentic local experiences.
             </p>
@@ -76,7 +84,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex">
                 <Mail className="h-5 w-5 text-tripvidya-primary mr-3 flex-shrink-0" />
-                <span className="text-gray-300">info@tripvidya.in</span>
+                <span className="text-gray-300">info@awaitingadventures.in</span>
               </li>
               <li className="flex">
                 <Phone className="h-5 w-5 text-tripvidya-primary mr-3 flex-shrink-0" />
@@ -114,7 +122,7 @@ const Footer = () => {
         
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} TripVidya. All rights reserved.
+            &copy; {new Date().getFullYear()} Awaiting Adventures. All rights reserved.
           </p>
           <div className="flex space-x-4">
             <Link to="/privacy-policy" className="text-gray-400 hover:text-white text-sm">

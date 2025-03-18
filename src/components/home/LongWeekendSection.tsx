@@ -20,22 +20,22 @@ const LongWeekendTripCard = ({ id, title, location, image, duration, price }) =>
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
         
         {/* Long Weekend Badge */}
-        <div className="absolute top-3 left-3 bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center">
+        <div className="absolute top-2 left-2 bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-2 py-0.5 rounded-full text-xs font-medium flex items-center">
           <Calendar className="h-3 w-3 mr-1" />
           Long Weekend
         </div>
         
-        <div className="absolute bottom-0 left-0 p-6 text-white">
-          <h3 className="text-xl font-bold mb-2">{title}</h3>
+        <div className="absolute bottom-0 left-0 p-4 text-white">
+          <h3 className="text-base font-bold mb-1.5">{title}</h3>
           
           <div className="flex items-center">
-            <MapPin className="h-4 w-4 mr-2" />
-            <span className="text-sm">{location}</span>
+            <MapPin className="h-3.5 w-3.5 mr-1.5" />
+            <span className="text-xs">{location}</span>
           </div>
           
-          <div className="flex items-baseline mt-2">
-            <span className="text-sm">{duration} • </span>
-            <span className="text-sm font-medium ml-1">₹{price.toLocaleString()}</span>
+          <div className="flex items-baseline mt-1.5">
+            <span className="text-xs">{duration} • </span>
+            <span className="text-xs font-medium ml-1">₹{price.toLocaleString()}</span>
           </div>
         </div>
       </div>
@@ -45,12 +45,14 @@ const LongWeekendTripCard = ({ id, title, location, image, duration, price }) =>
 
 const LongWeekendSection = () => {
   return (
-    <section className="py-12 bg-[#F8F4FF]">
+    <section className="py-10 bg-[#F8F4FF]">
       <div className="container mx-auto px-4">
+        <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">Long Weekend & Festive Special</h2>
+        
         <TripCarousel 
-          title="Long Weekend & Festive Special" 
-          description="Perfect getaways for long weekends and festive celebrations"
-          itemsPerView={4}
+          title=""
+          description=""
+          itemsPerView={4.5}
         >
           {longWeekendTrips.map((trip) => (
             <LongWeekendTripCard 
@@ -60,11 +62,11 @@ const LongWeekendSection = () => {
           ))}
         </TripCarousel>
         
-        <div className="text-center mt-10">
+        <div className="text-center mt-8">
           <Link to="/long-weekend-trips">
-            <Button variant="outline" className="border-purple-500 text-purple-600 hover:bg-purple-600 hover:text-white">
+            <Button variant="outline" size="sm" className="border-purple-500 text-purple-600 hover:bg-purple-600 hover:text-white">
               Explore All Weekend Getaways
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
             </Button>
           </Link>
         </div>

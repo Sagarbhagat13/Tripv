@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { MapPin, Calendar, Search, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { searchKeywords } from '@/data/searchKeywords';
 
 interface SearchBarProps {
   onSearch: (query: string, date: string) => void;
@@ -18,6 +19,20 @@ const SearchBar = ({
   const [destination, setDestination] = useState('');
   const [date, setDate] = useState('');
   const [isExpanded, setIsExpanded] = useState(variant === 'expanded');
+  
+  // Get a sample of popular search terms
+  const popularSearchTerms = [
+    "adventure", "beach", "family", "budget", "weekend", 
+    "honeymoon", "luxury", "cultural", "monsoon", "international"
+  ];
+  
+  const getPlaceholderText = () => {
+    const randomTerms = popularSearchTerms
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 3)
+      .join(', ');
+    return `Try searching for ${randomTerms}...`;
+  };
   
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,7 +58,7 @@ const SearchBar = ({
               </div>
               <input
                 type="text"
-                placeholder="Where do you want to go?"
+                placeholder={getPlaceholderText()}
                 className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-wanderon-primary focus:border-transparent"
                 value={destination}
                 onChange={(e) => setDestination(e.target.value)}
@@ -116,7 +131,7 @@ const SearchBar = ({
         </div>
         <input
           type="text"
-          placeholder="Search destinations, trips..."
+          placeholder={getPlaceholderText()}
           className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-wanderon-primary focus:border-transparent"
           value={destination}
           onChange={(e) => setDestination(e.target.value)}

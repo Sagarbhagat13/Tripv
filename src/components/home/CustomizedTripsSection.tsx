@@ -20,7 +20,7 @@ const customizedTrips: CustomTripProps[] = [
     id: "custom-1",
     title: "Mountain Retreat",
     location: "Himachal Pradesh",
-    image: "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     isInternational: false
   },
   {
@@ -34,28 +34,28 @@ const customizedTrips: CustomTripProps[] = [
     id: "custom-3",
     title: "Desert Safari",
     location: "Rajasthan",
-    image: "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80",
+    image: "https://images.unsplash.com/photo-1604596529732-eda197ef53d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     isInternational: false
   },
   {
     id: "custom-4",
     title: "Backwater Cruise",
     location: "Kerala",
-    image: "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80",
+    image: "https://images.unsplash.com/photo-1602501415308-526eb77a7025?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80",
     isInternational: false
   },
   {
     id: "custom-5",
     title: "Alpine Adventure",
     location: "Switzerland",
-    image: "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80",
+    image: "https://images.unsplash.com/photo-1527683040093-3a2b80ed1592?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     isInternational: true
   },
   {
     id: "custom-6",
     title: "Mediterranean Escape",
     location: "Greece",
-    image: "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80",
+    image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
     isInternational: true
   },
   {
@@ -77,7 +77,7 @@ const customizedTrips: CustomTripProps[] = [
 // Custom trip card component
 const CustomTripCard = ({ id, title, location, image }: CustomTripProps) => {
   return (
-    <Link to={`/custom-trip/${id}`} className="block rounded-lg overflow-hidden group">
+    <Link to={`/custom-trip/${id}`} className="block rounded-lg overflow-hidden group h-full">
       <div className="relative aspect-[3/4] overflow-hidden">
         <img 
           src={image} 
@@ -86,11 +86,11 @@ const CustomTripCard = ({ id, title, location, image }: CustomTripProps) => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
         
-        <div className="absolute bottom-0 left-0 p-4 text-white">
-          <h3 className="text-xl font-bold mb-1">{title}</h3>
+        <div className="absolute bottom-0 left-0 p-3 md:p-4 text-white">
+          <h3 className="text-base md:text-xl font-bold mb-1">{title}</h3>
           <div className="flex items-center">
-            <MapPin className="h-4 w-4 mr-1" />
-            <span className="text-sm">{location}</span>
+            <MapPin className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1" />
+            <span className="text-xs md:text-sm">{location}</span>
           </div>
         </div>
       </div>
@@ -110,38 +110,33 @@ const CustomizedTripsSection = () => {
   return (
     <section className="py-12 bg-gray-50">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
-          <div>
-            <h2 className="text-2xl font-bold text-wanderon-dark">Customized Trips</h2>
-            <p className="text-gray-600">Tailor-made experiences for your unique travel style</p>
-          </div>
-          
-          <div className="flex items-center space-x-2 mt-4 md:mt-0">
-            <Toggle 
-              variant="outline" 
-              pressed={!showInternational} 
-              onPressedChange={() => setShowInternational(false)}
-              className={`${!showInternational ? 'bg-blue-50 border-blue-300 text-blue-700' : 'border-gray-200 text-gray-700'} font-medium`}
-            >
-              <Home className="h-4 w-4 mr-2" />
-              Domestic
-            </Toggle>
-            <Toggle 
-              variant="outline" 
-              pressed={showInternational} 
-              onPressedChange={() => setShowInternational(true)}
-              className={`${showInternational ? 'bg-blue-50 border-blue-300 text-blue-700' : 'border-gray-200 text-gray-700'} font-medium`}
-            >
-              <Plane className="h-4 w-4 mr-2" />
-              International
-            </Toggle>
-          </div>
+        <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">Customized Trips</h2>
+        
+        <div className="flex justify-center items-center space-x-2 mb-8">
+          <Toggle 
+            variant="outline" 
+            pressed={!showInternational} 
+            onPressedChange={() => setShowInternational(false)}
+            className={`${!showInternational ? 'bg-blue-50 border-blue-300 text-blue-700' : 'border-gray-200 text-gray-700'} font-medium`}
+          >
+            <Home className="h-4 w-4 mr-2" />
+            Domestic
+          </Toggle>
+          <Toggle 
+            variant="outline" 
+            pressed={showInternational} 
+            onPressedChange={() => setShowInternational(true)}
+            className={`${showInternational ? 'bg-blue-50 border-blue-300 text-blue-700' : 'border-gray-200 text-gray-700'} font-medium`}
+          >
+            <Plane className="h-4 w-4 mr-2" />
+            International
+          </Toggle>
         </div>
         
         {isMobile ? (
           <TripCarousel 
             title=""
-            itemsPerView={1.2}
+            itemsPerView={1.5}
             className="mt-6"
           >
             {filteredTrips.map((trip) => (

@@ -19,7 +19,7 @@ export const regionalTrips: RegionalTrips[] = [
         price: 24999,
         discount: 15,
         duration: '6D/5N',
-        image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1612436395449-509dab4a5642?auto=format&fit=crop&w=800&q=80',
         rating: 4.8,
         reviews: 156
       },
@@ -41,18 +41,7 @@ export const regionalTrips: RegionalTrips[] = [
         price: 16999,
         discount: 8,
         duration: '4D/3N',
-        image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80',
-        rating: 4.6,
-        reviews: 98
-      },
-      {
-        id: 'north-4',
-        title: 'Spiritual Varanasi',
-        location: 'Uttar Pradesh',
-        price: 16999,
-        discount: 8,
-        duration: '4D/3N',
-        image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1561361058-c24cecae35ca?auto=format&fit=crop&w=800&q=80',
         rating: 4.6,
         reviews: 98
       }

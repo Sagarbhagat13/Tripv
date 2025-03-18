@@ -43,10 +43,7 @@ const RegionalTripsSection = () => {
   return (
     <section className="py-12 bg-gradient-to-b from-blue-50 to-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-wanderon-dark">Explore Trips By Region</h2>
-          <p className="text-gray-600 mt-2">Discover India's diversity across its regions</p>
-        </div>
+        <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">Explore Trips By Region</h2>
         
         <Tabs defaultValue="North" onValueChange={setActiveRegion}>
           <div className="flex justify-center mb-8">
@@ -66,8 +63,8 @@ const RegionalTripsSection = () => {
           {regionalTrips.map((regionData) => (
             <TabsContent key={regionData.region} value={regionData.region}>
               <TripCarousel 
-                title={`Best Places to Visit in ${regionData.region} India`}
-                description={`Discover the unique culture and landscapes of ${regionData.region}ern India`}
+                title=""
+                description=""
                 itemsPerView={4}
               >
                 {regionData.trips.map((trip) => (

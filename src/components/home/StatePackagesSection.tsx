@@ -12,46 +12,56 @@ import { useIsMobile } from '@/hooks/use-mobile';
 
 const StatePackagesSection = () => {
   const [activeMonth, setActiveMonth] = useState("January");
-  const tabsListRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   
-  // Scroll active tab into view when it changes
+  // Scroll to center the active tab when it changes
   useEffect(() => {
-    if (tabsListRef.current) {
-      const activeTabElement = tabsListRef.current.querySelector('[data-state="active"]');
-      if (activeTabElement) {
-        const tabsListRect = tabsListRef.current.getBoundingClientRect();
-        const activeTabRect = activeTabElement.getBoundingClientRect();
+    if (scrollContainerRef.current && isMobile) {
+      const activeTab = scrollContainerRef.current.querySelector('[data-state="active"]');
+      if (activeTab) {
+        const containerWidth = scrollContainerRef.current.offsetWidth;
+        const tabWidth = activeTab.clientWidth;
+        const tabLeft = (activeTab as HTMLElement).offsetLeft;
         
-        // Calculate the scroll position to center the active tab
-        const scrollLeft = activeTabRect.left - tabsListRect.left - 
-                          (tabsListRect.width / 2) + (activeTabRect.width / 2);
-                          
-        tabsListRef.current.scrollLeft = scrollLeft;
+        scrollContainerRef.current.scrollTo({
+          left: tabLeft - (containerWidth / 2) + (tabWidth / 2),
+          behavior: 'smooth'
+        });
       }
     }
-  }, [activeMonth]);
+  }, [activeMonth, isMobile]);
   
   return (
     <section className="py-12 bg-white">
       <div className={cn("container mx-auto", isMobile ? "px-4" : "px-4")}>
-        <div className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-wanderon-dark">Explore Monthly Trips</h2>
-          <p className="text-gray-600 mt-2">Discover the best destinations for each month of the year</p>
-        </div>
+        <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">Explore Monthly Trips</h2>
         
         <Tabs defaultValue="January" onValueChange={setActiveMonth}>
-          <div className="relative mb-8">
+          <div className="mb-8">
             <div 
-              ref={tabsListRef}
-              className="overflow-x-auto scrollbar-thin scrollbar-thumb-wanderon-primary scrollbar-track-wanderon-light pb-2"
+              ref={scrollContainerRef}
+              className="overflow-x-auto pb-2 no-scrollbar"
             >
-              <TabsList className="bg-wanderon-light rounded-full p-1.5 w-max inline-flex mx-auto">
+              <TabsList className={cn(
+                "bg-wanderon-light rounded-full p-1.5 inline-flex min-w-max",
+                isMobile ? "mx-auto w-max" : "mx-auto"
+              )}>
                 {monthlyTrips.map((monthData) => (
                   <TabsTrigger 
                     key={monthData.month} 
                     value={monthData.month}
-                    className="rounded-full px-4 py-2 whitespace-nowrap data-[state=active]:bg-wanderon-primary data-[state=active]:text-white"
+                    className={cn(
+                      "rounded-full whitespace-nowrap focus:z-10",
+                      "data-[state=active]:bg-blue-600", 
+                      "data-[state=active]:text-white",
+                      "data-[state=active]:font-bold",
+                      "data-[state=active]:shadow-md",
+                      "data-[state=active]:ring-2",
+                      "data-[state=active]:ring-blue-400",
+                      "data-[state=inactive]:text-gray-600",
+                      isMobile ? "text-sm px-3 py-1.5" : "px-4 py-2"
+                    )}
                   >
                     {monthData.month}
                   </TabsTrigger>
@@ -63,15 +73,15 @@ const StatePackagesSection = () => {
           {monthlyTrips.map((monthData) => (
             <TabsContent key={monthData.month} value={monthData.month}>
               <TripCarousel 
-                title={`Best Places to Visit in ${monthData.month}`}
-                description="Perfect weather conditions and special experiences"
+                title=""
+                description=""
                 itemsPerView={isMobile ? 1 : 4}
               >
                 {monthData.trips.map((trip) => (
                   <CarouselCard 
                     key={trip.id} 
                     {...trip}
-                    stateHighlight={true}
+                    month={monthData.month}
                     className="monthly-package"
                   />
                 ))}

@@ -18,4 +18,5 @@ export interface TripCardProps {
   bikingPackage?: boolean;
   suvPackage?: boolean;
   longWeekend?: boolean;
+  offbeat?: boolean;
 }

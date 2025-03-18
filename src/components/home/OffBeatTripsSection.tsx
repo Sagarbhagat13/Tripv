@@ -11,15 +11,18 @@ const OffBeatTripsSection = () => {
   return (
     <section className="py-12 bg-[#F3F3F3]">
       <div className="container mx-auto px-4">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Off-Beat Destinations</h2>
+        
         <TripCarousel 
-          title="Off-Beat Destinations" 
-          description="Discover hidden gems and unexplored territories"
+          title=""
+          description=""
           itemsPerView={4}
         >
           {offBeatTrips.map((trip) => (
             <CarouselCard 
               key={trip.id} 
               {...trip}
+              offbeat={true}
             />
           ))}
         </TripCarousel>

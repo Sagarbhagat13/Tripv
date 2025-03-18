@@ -1,7 +1,8 @@
-
+import { useState } from 'react';
 import { Search, User, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import EnquiryFormDialog from '@/components/enquiry/EnquiryFormDialog';
 
 interface DesktopActionsProps {
   isScrolled: boolean;
@@ -9,6 +10,16 @@ interface DesktopActionsProps {
 }
 
 const DesktopActions = ({ isScrolled, toggleSearch }: DesktopActionsProps) => {
+  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
+
+  const openEnquiryForm = () => {
+    setIsEnquiryOpen(true);
+  };
+
+  const closeEnquiryForm = () => {
+    setIsEnquiryOpen(false);
+  };
+
   return (
     <div className="hidden lg:flex items-center space-x-4">
       <Button 
@@ -36,10 +47,13 @@ const DesktopActions = ({ isScrolled, toggleSearch }: DesktopActionsProps) => {
         variant="default"
         size="sm" 
         className="bg-tripvidya-primary hover:bg-tripvidya-primary/90"
+        onClick={openEnquiryForm}
       >
         <MapPin className="h-4 w-4 mr-2" />
         Plan My Trip
       </Button>
+
+      <EnquiryFormDialog isOpen={isEnquiryOpen} onClose={closeEnquiryForm} />
     </div>
   );
 };

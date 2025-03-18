@@ -23,6 +23,7 @@ export const HorizontalTripCard = ({
   familySpecial,
   bikingPackage,
   suvPackage,
+  offbeat,
 }: TripCardProps) => {
   const discountedPrice = price - (price * discount) / 100;
   
@@ -40,12 +41,14 @@ export const HorizontalTripCard = ({
       className
     )}>
       <div className="flex flex-col md:flex-row h-full">
-        <div className="relative md:w-2/5 h-60 md:h-auto">
-          <img 
-            src={image} 
-            alt={title} 
-            className="w-full h-full object-cover"
-          />
+        <div className="relative md:w-2/5">
+          <div className="aspect-[3/4] md:h-full">
+            <img 
+              src={image} 
+              alt={title} 
+              className="w-full h-full object-cover"
+            />
+          </div>
           <FavoriteButton />
           <CardBadge 
             discount={discount}
@@ -55,6 +58,7 @@ export const HorizontalTripCard = ({
             familySpecial={familySpecial}
             bikingPackage={badgeBikingPackage}
             suvPackage={badgeSUVPackage}
+            offbeat={offbeat}
           />
         </div>
         
@@ -73,6 +77,7 @@ export const HorizontalTripCard = ({
             honeymoonSpecial={honeymoonSpecial}
             international={international}
             familySpecial={familySpecial}
+            offbeat={offbeat}
           />
         </div>
       </div>
