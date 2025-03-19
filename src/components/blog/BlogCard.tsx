@@ -24,9 +24,9 @@ const BlogCard = ({
   slug,
 }: BlogCardProps) => {
   return (
-    <Link to={`/blog/${slug}`} className="group h-full">
+    <Link to={`/blog/${slug}`} className="group">
       <div className="rounded-lg overflow-hidden bg-white shadow-md transition-all duration-300 hover:shadow-lg h-full flex flex-col">
-        <div className="relative aspect-[3/4] overflow-hidden">
+        <div className="relative h-48 overflow-hidden">
           <img 
             src={image} 
             alt={title}

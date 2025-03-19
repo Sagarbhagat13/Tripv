@@ -9,7 +9,15 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { cn } from '@/lib/utils';
-import { BatchDate } from './booking/types';
+
+interface BatchDate {
+  id: string;
+  startDate: string;
+  endDate: string;
+  totalSlots: number;
+  availableSlots: number;
+  price: number;
+}
 
 interface BatchDatesTableProps {
   batchDates: BatchDate[];

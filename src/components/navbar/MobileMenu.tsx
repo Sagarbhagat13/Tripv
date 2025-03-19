@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { MapPin, X } from 'lucide-react';
 import NavLinks from './NavLinks';
-import { useState } from 'react';
 import EnquiryFormDialog from '@/components/enquiry/EnquiryFormDialog';
 
 interface MobileMenuProps {
@@ -12,10 +11,18 @@ interface MobileMenuProps {
   overlayRef: React.RefObject<HTMLDivElement>;
   navLinks: { name: string; path: string }[];
   onClose: () => void;
+  isEnquiryOpen: boolean;
+  setIsEnquiryOpen: (isOpen: boolean) => void;
 }
 
-const MobileMenu = ({ isOpen, overlayRef, navLinks, onClose }: MobileMenuProps) => {
-  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
+const MobileMenu = ({ 
+  isOpen, 
+  overlayRef, 
+  navLinks, 
+  onClose, 
+  isEnquiryOpen, 
+  setIsEnquiryOpen 
+}: MobileMenuProps) => {
 
   useEffect(() => {
     if (!isOpen) return;
@@ -41,10 +48,7 @@ const MobileMenu = ({ isOpen, overlayRef, navLinks, onClose }: MobileMenuProps) 
   const openEnquiryForm = (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsEnquiryOpen(true);
-  };
-
-  const closeEnquiryForm = () => {
-    setIsEnquiryOpen(false);
+    // Don't close the menu when opening the enquiry form
   };
   
   return (
@@ -96,7 +100,7 @@ const MobileMenu = ({ isOpen, overlayRef, navLinks, onClose }: MobileMenuProps) 
         </div>
       </div>
 
-      <EnquiryFormDialog isOpen={isEnquiryOpen} onClose={closeEnquiryForm} />
+      <EnquiryFormDialog isOpen={isEnquiryOpen} onClose={() => setIsEnquiryOpen(false)} />
     </div>
   );
 };

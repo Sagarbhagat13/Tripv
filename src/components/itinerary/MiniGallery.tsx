@@ -2,13 +2,19 @@
 import { useEffect, useState } from 'react';
 import { galleryPhotos } from '@/components/home/PhotoGallery';
 import { useIsMobile } from '@/hooks/use-mobile';
-import TripCarousel from '@/components/TripCarousel';
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious 
+} from "@/components/ui/carousel";
 
 interface MiniGalleryProps {
   count?: number;
 }
 
-const MiniGallery = ({ count = 6 }: MiniGalleryProps) => {
+const MiniGallery = ({ count = 3 }: MiniGalleryProps) => {
   const [randomPhotos, setRandomPhotos] = useState<typeof galleryPhotos>([]);
   const isMobile = useIsMobile();
   
@@ -32,30 +38,44 @@ const MiniGallery = ({ count = 6 }: MiniGalleryProps) => {
   if (randomPhotos.length === 0) return null;
   
   return (
-    <div className="bg-gray-50 py-10">
+    <div className="bg-gray-50 py-8">
       <div className="container mx-auto px-4">
-        <TripCarousel 
-          title="Travel Inspiration"
-          description="Capture the beauty of your next adventure"
-          itemsPerView={isMobile ? 2 : 4}
+        <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">Travel Inspiration</h3>
+        
+        <Carousel 
+          className="w-full"
+          opts={{
+            align: "start",
+            dragFree: true,
+            loop: true,
+          }}
         >
-          {randomPhotos.map(photo => (
-            <div key={photo.id} className="relative overflow-hidden rounded-lg h-full">
-              <div className="aspect-[3/4] rounded-lg overflow-hidden">
-                <img 
-                  src={photo.url} 
-                  alt={photo.alt}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                  loading="eager"
-                />
-                <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-black/70 to-transparent pointer-events-none" />
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <p className="text-sm font-medium text-white">{photo.location}</p>
+          <CarouselContent className="px-4">
+            {randomPhotos.map(photo => (
+              <CarouselItem 
+                key={photo.id} 
+                className={isMobile ? 'basis-[77%]' : 'basis-1/3'}
+              >
+                <div className="relative overflow-hidden rounded-lg">
+                  <div className="aspect-[3/4] rounded-lg overflow-hidden">
+                    <img 
+                      src={photo.url} 
+                      alt={photo.alt}
+                      className="w-full h-full object-cover"
+                      loading="eager"
+                    />
+                    <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-black/70 to-transparent pointer-events-none" />
+                    <div className="absolute bottom-0 left-0 right-0 p-3">
+                      <p className="text-sm font-medium text-white">{photo.location}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
-        </TripCarousel>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="left-2 border-none bg-black/30 text-white hover:bg-black/50" />
+          <CarouselNext className="right-2 border-none bg-black/30 text-white hover:bg-black/50" />
+        </Carousel>
       </div>
     </div>
   );

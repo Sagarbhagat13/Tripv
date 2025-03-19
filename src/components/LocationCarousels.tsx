@@ -2,6 +2,7 @@
 import React from 'react';
 import TripCarousel from './TripCarousel';
 import CarouselCard from './home/CarouselCard';
+import ItineraryCard from './customized/ItineraryCard';
 import { Trip } from '@/data/popularTrips';
 
 interface LocationCarouselsProps {
@@ -38,10 +39,14 @@ const LocationCarousels = ({ groupTours, customTrips, locationName }: LocationCa
           className="max-w-[1200px] mx-auto"
         >
           {customTrips.map((trip) => (
-            <CarouselCard
+            <ItineraryCard
               key={trip.id}
-              {...trip}
-              className="aspect-[3/4]"
+              id={trip.id}
+              title={trip.title}
+              image={trip.image}
+              duration={trip.duration}
+              cities={[trip.location]}
+              isCustomizable={true}
             />
           ))}
         </TripCarousel>

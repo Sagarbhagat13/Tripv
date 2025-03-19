@@ -41,14 +41,12 @@ export const HorizontalTripCard = ({
       className
     )}>
       <div className="flex flex-col md:flex-row h-full">
-        <div className="relative md:w-2/5">
-          <div className="aspect-[3/4] md:h-full">
-            <img 
-              src={image} 
-              alt={title} 
-              className="w-full h-full object-cover"
-            />
-          </div>
+        <div className="relative md:w-2/5 h-60 md:h-auto">
+          <img 
+            src={image} 
+            alt={title} 
+            className="w-full h-full object-cover"
+          />
           <FavoriteButton />
           <CardBadge 
             discount={discount}

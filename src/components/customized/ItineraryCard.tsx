@@ -20,13 +20,13 @@ const ItineraryCard = ({
   duration, 
   cities, 
   isCustomizable = true,
-  isSuggested = false 
+  isSuggested = false
 }: ItineraryCardProps) => {
-  // Determine the link based on whether it's a suggested itinerary
-  const linkTo = isSuggested ? `/suggested-trip/${id}` : `/custom-trip/${id}`;
+  // For customizable cards, always link to suggested-trip route
+  const linkRoute = `/suggested-trip/${id}`;
   
   return (
-    <Link to={linkTo} className="block group h-full">
+    <Link to={linkRoute} className="block group">
       <div className="relative aspect-[3/4] overflow-hidden rounded-lg">
         <img 
           src={image} 
@@ -36,22 +36,22 @@ const ItineraryCard = ({
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
         
         {isCustomizable && (
-          <div className="absolute top-2 right-2 bg-blue-500 text-white px-2 py-0.5 rounded-full text-xs font-medium">
+          <div className="absolute top-4 right-4 bg-purple-500 text-white px-3 py-1 rounded-full text-xs font-medium">
             Customizable
           </div>
         )}
         
-        <div className="absolute bottom-0 left-0 p-3 md:p-4 text-white">
-          <h3 className="text-sm md:text-base font-bold mb-1.5 line-clamp-2">{title}</h3>
+        <div className="absolute bottom-0 left-0 p-6 text-white">
+          <h3 className="text-xl font-bold mb-2">{title}</h3>
           
-          <div className="flex items-center mb-1.5">
-            <Calendar className="h-3.5 w-3.5 mr-1.5" />
-            <span className="text-xs">{duration}</span>
+          <div className="flex items-center mb-2">
+            <Calendar className="h-4 w-4 mr-2" />
+            <span className="text-sm">{duration}</span>
           </div>
           
           <div className="flex items-center">
-            <MapPin className="h-3.5 w-3.5 mr-1.5" />
-            <span className="text-xs line-clamp-1">{cities.join(' • ')}</span>
+            <MapPin className="h-4 w-4 mr-2" />
+            <span className="text-sm">{cities.join(' • ')}</span>
           </div>
         </div>
       </div>

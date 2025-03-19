@@ -45,7 +45,7 @@ export const CompactTripCard = ({
         <img 
           src={image} 
           alt={title} 
-          className="w-full aspect-[3/4] object-cover" /* Updated to match aspect ratio */
+          className="w-full h-48 object-cover"
         />
         <FavoriteButton />
         <CardBadge 

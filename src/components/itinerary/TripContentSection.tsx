@@ -26,6 +26,7 @@ interface TripContentSectionProps {
   tripId?: string;
   tripName: string;
   isCustomizedTrip?: boolean;
+  isSuggestedTrip?: boolean;
   showBookingForm?: boolean;
   setShowBookingForm?: (show: boolean) => void;
   activePricingId?: string;
@@ -45,6 +46,7 @@ const TripContentSection = ({
   tripId,
   tripName,
   isCustomizedTrip = false,
+  isSuggestedTrip = false,
   showBookingForm,
   setShowBookingForm,
   activePricingId,
@@ -70,6 +72,7 @@ const TripContentSection = ({
             discount={discount}
             duration={duration}
             isCustomizedTrip={isCustomizedTrip}
+            isSuggestedTrip={isSuggestedTrip}
             tripName={tripName}
             isOpen={showBookingForm}
             onClose={() => setShowBookingForm?.(false)}

@@ -44,7 +44,7 @@ const App = () => (
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/trip/:id" element={<ItineraryPage />} />
-          <Route path="/suggested-trip/:tripId" element={<SuggestedItineraryPage />} />
+          <Route path="/suggested-trip/:id" element={<SuggestedItineraryPage />} />
           <Route path="/day-itinerary/:tripId" element={<DayItineraryPage />} />
           <Route path="/custom-trip/:tripId" element={<CustomizedTripPage />} />
           <Route path="/contact" element={<ContactPage />} />

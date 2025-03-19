@@ -45,12 +45,19 @@ const GoogleReviewsSlider = () => {
   const handlePrevious = () => {
     if (currentReviewIndex > 0) {
       setCurrentReviewIndex(currentReviewIndex - 1);
+    } else if (api) {
+      // Jump to the last slide if at the beginning
+      const lastIndex = googleReviews.length - 1;
+      setCurrentReviewIndex(lastIndex);
     }
   };
 
   const handleNext = () => {
     if (currentReviewIndex < googleReviews.length - 1) {
       setCurrentReviewIndex(currentReviewIndex + 1);
+    } else if (api) {
+      // Jump to the first slide if at the end
+      setCurrentReviewIndex(0);
     }
   };
   
@@ -71,16 +78,14 @@ const GoogleReviewsSlider = () => {
                 align: "start",
                 startIndex: currentReviewIndex,
                 dragFree: true,
-                containScroll: false
+                loop: true
               }}
               setApi={setApi}
-              onSelectChange={(index) => {
-                handleSelect(index);
-              }}
+              onSelectChange={handleSelect}
             >
-              <CarouselContent className="-ml-4">
+              <CarouselContent className="px-4">
                 {googleReviews.map((review, index) => (
-                  <CarouselItem key={index} className="pl-4 basis-[87%] md:basis-1/2 lg:basis-1/3">
+                  <CarouselItem key={index} className="basis-[87%] md:basis-1/2 lg:basis-1/3">
                     <ReviewCard 
                       review={review} 
                       isActive={index === currentReviewIndex} 
@@ -92,8 +97,8 @@ const GoogleReviewsSlider = () => {
               <ReviewNavButtons 
                 onPrevious={handlePrevious}
                 onNext={handleNext}
-                canGoPrevious={currentReviewIndex > 0}
-                canGoNext={currentReviewIndex < googleReviews.length - 1}
+                canGoPrevious={true}
+                canGoNext={true}
               />
             </Carousel>
             

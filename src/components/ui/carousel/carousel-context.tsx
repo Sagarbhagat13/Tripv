@@ -12,9 +12,8 @@ type CarouselApi = UseEmblaCarouselType[1]
 /**
  * Types for the parameters to be passed to the useEmblaCarousel hook
  */
-type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
-type CarouselOptions = UseCarouselParameters[0]
-type CarouselPlugin = UseCarouselParameters[1]
+type CarouselOptions = NonNullable<Parameters<typeof useEmblaCarousel>[0]>
+type CarouselPlugin = NonNullable<Parameters<typeof useEmblaCarousel>[1]>
 
 /**
  * Context props that will be shared across all carousel components

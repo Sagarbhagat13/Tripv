@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Menu, X, Search, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -9,19 +10,23 @@ interface MobileActionsProps {
   isMenuOpen: boolean;
   toggleMenu: (e: React.MouseEvent) => void;
   toggleSearch: () => void;
+  isEnquiryOpen: boolean;
+  setIsEnquiryOpen: (isOpen: boolean) => void;
 }
 
-const MobileActions = ({ isScrolled, isMenuOpen, toggleMenu, toggleSearch }: MobileActionsProps) => {
-  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
+const MobileActions = ({ 
+  isScrolled, 
+  isMenuOpen, 
+  toggleMenu, 
+  toggleSearch, 
+  isEnquiryOpen, 
+  setIsEnquiryOpen 
+}: MobileActionsProps) => {
 
   const openEnquiryForm = (e: React.MouseEvent) => {
     // Prevent event propagation to avoid triggering other handlers
     e.stopPropagation();
     setIsEnquiryOpen(true);
-  };
-
-  const closeEnquiryForm = () => {
-    setIsEnquiryOpen(false);
   };
 
   return (
@@ -64,7 +69,7 @@ const MobileActions = ({ isScrolled, isMenuOpen, toggleMenu, toggleSearch }: Mob
         {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
       </Button>
       
-      <EnquiryFormDialog isOpen={isEnquiryOpen} onClose={closeEnquiryForm} />
+      <EnquiryFormDialog isOpen={isEnquiryOpen} onClose={() => setIsEnquiryOpen(false)} />
     </div>
   );
 };

@@ -32,7 +32,8 @@ const CarouselItem = React.forwardRef<
       aria-roledescription="slide"
       className={cn(
         "min-w-0 shrink-0 grow-0 basis-full",
-        orientation === "horizontal" ? "pl-3" : "pt-3", // Reduced padding from pl-4 to pl-3
+        // Make sure we have consistent padding that doesn't get cropped
+        orientation === "horizontal" ? "pr-4" : "pb-4",
         className
       )}
       {...props}

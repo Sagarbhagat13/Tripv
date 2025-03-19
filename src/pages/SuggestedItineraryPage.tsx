@@ -11,11 +11,9 @@ import GoogleReviewsSlider from '@/components/itinerary/GoogleReviewsSlider';
 import MiniGallery from '@/components/itinerary/MiniGallery';
 import { getTripData } from '@/services/tripService';
 import { useTripActions } from '@/hooks/use-trip-actions';
-import MobileFixedBottom from '@/components/itinerary/MobileFixedBottom';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { generateBatchDates } from '@/utils/travelersUtil';
 import { PricingOption } from '@/components/itinerary/booking/PricingTabs';
-import SuggestedItineraryBadge from '@/components/itinerary/SuggestedItineraryBadge';
+import SuggestedTripFixedBottom from '@/components/itinerary/SuggestedTripFixedBottom';
 
 const SuggestedItineraryPage = () => {
   const { id, tripId } = useParams<{ id?: string; tripId?: string }>();
@@ -29,11 +27,7 @@ const SuggestedItineraryPage = () => {
   const [activePricingId, setActivePricingId] = useState('standard');
   const [activePricing, setActivePricing] = useState<PricingOption | null>(null);
   
-  // Generate batch dates for this trip
-  const discountedPrice = tripData.price - (tripData.price * tripData.discount) / 100;
-  const batchDates = generateBatchDates(discountedPrice);
-
-  const handleCheckDates = () => {
+  const handleCheckDetails = () => {
     setShowBookingForm(true);
   };
 
@@ -43,17 +37,14 @@ const SuggestedItineraryPage = () => {
   };
   
   return (
-    <div className="flex flex-col min-h-screen bg-purple-50">
+    <div className="flex flex-col min-h-screen">
       <Navbar />
       
-      <main className="flex-grow pt-16 pb-[72px] md:pb-0">
-        <div className="relative">
-          <TripImageGallery 
-            images={tripData.images} 
-            title={tripData.title}
-          />
-          <SuggestedItineraryBadge />
-        </div>
+      <main className="flex-grow pt-16 pb-[72px] md:pb-0 w-full">
+        <TripImageGallery 
+          images={tripData.images} 
+          title={tripData.title}
+        />
         
         <div className="container mx-auto px-4 py-6">
           <TripHeaderSection 
@@ -69,53 +60,44 @@ const SuggestedItineraryPage = () => {
           />
         </div>
         
-        <div className="bg-gradient-to-b from-purple-50 to-white pb-8">
-          <TripContentSection 
-            description={tripData.description}
-            itinerary={tripData.itinerary}
-            highlights={tripData.highlights}
-            inclusions={tripData.inclusions}
-            exclusions={tripData.exclusions}
-            faqs={tripData.faqs}
-            price={tripData.price}
-            discount={tripData.discount}
-            duration={tripData.duration}
-            tripId={actualTripId}
-            tripName={tripData.title}
-            showBookingForm={showBookingForm}
-            setShowBookingForm={setShowBookingForm}
-            activePricingId={activePricingId}
-            onPricingChange={handlePricingChange}
-          />
-        </div>
+        <TripContentSection 
+          description={tripData.description}
+          itinerary={tripData.itinerary}
+          highlights={tripData.highlights}
+          inclusions={tripData.inclusions}
+          exclusions={tripData.exclusions}
+          faqs={tripData.faqs}
+          price={tripData.price}
+          discount={tripData.discount}
+          duration={tripData.duration}
+          tripId={actualTripId}
+          tripName={tripData.title}
+          isCustomizedTrip={true} // Set to true to hide date options
+          showBookingForm={showBookingForm}
+          setShowBookingForm={setShowBookingForm}
+          activePricingId={activePricingId}
+          onPricingChange={handlePricingChange}
+        />
         
         {/* Google Reviews Slider */}
-        <div className="bg-white py-10">
-          <GoogleReviewsSlider />
-        </div>
+        <GoogleReviewsSlider />
         
-        {/* Mini Gallery (Travel Inspiration) */}
-        <div className="bg-purple-50 py-10">
-          <MiniGallery />
-        </div>
+        {/* Mini Gallery (Travel Inspiration) moved below reviews */}
+        <MiniGallery />
         
         {/* Similar Trips Section */}
-        <div className="bg-white py-10">
-          <SimilarTripsSection 
-            currentTripId={actualTripId} 
-            currentLocation={tripData.location} 
-          />
-        </div>
+        <SimilarTripsSection 
+          currentTripId={actualTripId} 
+          currentLocation={tripData.location} 
+        />
 
         {isMobile && (
-          <MobileFixedBottom 
+          <SuggestedTripFixedBottom 
             price={tripData.price}
             discount={tripData.discount}
-            onCheckDates={handleCheckDates}
-            batchDates={batchDates}
+            onCheckDetails={handleCheckDetails}
             tripName={tripData.title}
             activePricing={activePricing}
-            className="bg-purple-100 border-t border-purple-200"
           />
         )}
       </main>

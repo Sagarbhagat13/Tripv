@@ -46,7 +46,7 @@ const ItineraryPage = () => {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       
-      <main className="flex-grow pt-16 pb-[72px] md:pb-0">
+      <main className="flex-grow pt-16 pb-[72px] md:pb-0 w-full">
         <TripImageGallery 
           images={tripData.images} 
           title={tripData.title}

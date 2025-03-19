@@ -7,7 +7,7 @@ interface MinimalHeroProps {
 
 const MinimalHero = ({ title }: MinimalHeroProps) => {
   return (
-    <section className="relative h-[400px] md:h-[600px] flex items-center justify-center -mt-24">
+    <section className="relative h-[400px] md:h-[600px] flex items-center justify-center -mt-24 w-full">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -28,4 +28,3 @@ const MinimalHero = ({ title }: MinimalHeroProps) => {
 };
 
 export default MinimalHero;
-

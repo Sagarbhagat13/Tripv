@@ -53,22 +53,23 @@ const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
     },
     ref
   ) => {
-    // Set default options with no animations for minimalistic scrolling
-    const defaultOpts: CarouselOptions = {
-      align: "start",
-      loop: false,
+    // Specify the correct literal type 'start' for align
+    const defaultOptions: CarouselOptions = {
+      align: "start" as const, // Using 'as const' to ensure correct literal type
+      loop: true,
       skipSnaps: false,
-      duration: 0, // Remove duration for instant snapping
-      ...opts
+      dragFree: true,
+      startIndex: 0, // Always start from the first slide
     }
-
-    const [carouselRef, api] = useEmblaCarousel(
-      {
-        ...defaultOpts,
-        axis: orientation === "horizontal" ? "x" : "y",
-      },
-      plugins
-    )
+    
+    // Create a properly typed options object
+    const options: CarouselOptions = {
+      ...defaultOptions,
+      ...opts,
+      axis: orientation === "horizontal" ? "x" : "y",
+    }
+    
+    const [carouselRef, api] = useEmblaCarousel(options, plugins)
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
 
@@ -89,6 +90,15 @@ const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
         onSelectChange(api.selectedScrollSnap())
       }
     }, [onSelectChange])
+
+    /**
+     * Scroll to the first slide when component mounts
+     */
+    React.useEffect(() => {
+      if (api) {
+        api.scrollTo(0, true)
+      }
+    }, [api])
 
     /**
      * Scroll to the previous slide
@@ -149,9 +159,8 @@ const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
         value={{
           carouselRef,
           api: api,
-          opts: defaultOpts,
-          orientation:
-            orientation || (defaultOpts?.axis === "y" ? "vertical" : "horizontal"),
+          opts: options,
+          orientation,
           scrollPrev,
           scrollNext,
           canScrollPrev,

@@ -17,6 +17,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const isMobile = useIsMobile();
   const overlayRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
@@ -92,12 +93,14 @@ const Navbar = () => {
           {/* Desktop Action Buttons */}
           <DesktopActions isScrolled={isScrolled || isItineraryPage} toggleSearch={toggleSearch} />
           
-          {/* Mobile Menu Button */}
+          {/* Mobile Action Buttons */}
           <MobileActions 
             isScrolled={isScrolled || isItineraryPage} 
             isMenuOpen={isMenuOpen} 
             toggleMenu={toggleMenu} 
-            toggleSearch={toggleSearch} 
+            toggleSearch={toggleSearch}
+            isEnquiryOpen={isEnquiryOpen}
+            setIsEnquiryOpen={setIsEnquiryOpen}
           />
         </div>
       </div>
@@ -108,6 +111,8 @@ const Navbar = () => {
         overlayRef={overlayRef}
         navLinks={navLinks}
         onClose={() => setIsMenuOpen(false)}
+        isEnquiryOpen={isEnquiryOpen}
+        setIsEnquiryOpen={setIsEnquiryOpen}
       />
       
       {/* Search Overlay */}

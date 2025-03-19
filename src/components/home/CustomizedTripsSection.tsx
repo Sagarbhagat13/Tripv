@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Plane, Home } from 'lucide-react';
@@ -77,7 +76,7 @@ const customizedTrips: CustomTripProps[] = [
 // Custom trip card component
 const CustomTripCard = ({ id, title, location, image }: CustomTripProps) => {
   return (
-    <Link to={`/custom-trip/${id}`} className="block rounded-lg overflow-hidden group h-full">
+    <Link to={`/custom-trip/${id}`} className="block rounded-lg overflow-hidden group">
       <div className="relative aspect-[3/4] overflow-hidden">
         <img 
           src={image} 
@@ -86,11 +85,11 @@ const CustomTripCard = ({ id, title, location, image }: CustomTripProps) => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
         
-        <div className="absolute bottom-0 left-0 p-3 md:p-4 text-white">
-          <h3 className="text-base md:text-xl font-bold mb-1">{title}</h3>
+        <div className="absolute bottom-0 left-0 p-4 text-white">
+          <h3 className="text-xl font-bold mb-1">{title}</h3>
           <div className="flex items-center">
-            <MapPin className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1" />
-            <span className="text-xs md:text-sm">{location}</span>
+            <MapPin className="h-4 w-4 mr-1" />
+            <span className="text-sm">{location}</span>
           </div>
         </div>
       </div>
@@ -136,7 +135,7 @@ const CustomizedTripsSection = () => {
         {isMobile ? (
           <TripCarousel 
             title=""
-            itemsPerView={1.5}
+            itemsPerView={1.2}
             className="mt-6"
           >
             {filteredTrips.map((trip) => (

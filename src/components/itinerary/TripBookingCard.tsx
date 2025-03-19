@@ -6,12 +6,13 @@ import { getFormattedTravelerText, generateBatchDates } from '@/utils/travelersU
 import DateSelectionDialog from './DateSelectionDialog';
 import "@/styles/components/tabs.css";
 
-// Import new components
+// Import components
 import TravelersDisplay from './booking/TravelersDisplay';
 import PricingTabs, { PricingOption } from './booking/PricingTabs';
 import PricingInfo from './booking/PricingInfo';
 import TripDetails from './booking/TripDetails';
 import ActionButtons from './booking/ActionButtons';
+import SuggestedActionButtons from './booking/SuggestedActionButtons';
 import ContactSection from './booking/ContactSection';
 
 interface TripBookingCardProps {
@@ -19,6 +20,7 @@ interface TripBookingCardProps {
   discount: number;
   duration: string;
   isCustomizedTrip?: boolean;
+  isSuggestedTrip?: boolean;
   tripName: string;
   isOpen?: boolean;
   onClose?: () => void;
@@ -30,7 +32,8 @@ const TripBookingCard = ({
   price, 
   discount, 
   duration, 
-  isCustomizedTrip = false, 
+  isCustomizedTrip = false,
+  isSuggestedTrip = false,
   tripName, 
   isOpen = false, 
   onClose,
@@ -43,7 +46,8 @@ const TripBookingCard = ({
   const [activePricingId, setActivePricingId] = useState(externalActivePricingId || 'standard');
   const discountedPrice = price - (price * discount) / 100;
   const travelersText = !isCustomizedTrip ? getFormattedTravelerText() : null;
-  const batchDates = !isCustomizedTrip ? generateBatchDates(discountedPrice) : [];
+  const batchDates = !isCustomizedTrip && !isSuggestedTrip ? generateBatchDates(discountedPrice) : [];
+  const hideAvailableDates = isCustomizedTrip || isSuggestedTrip;
   
   // Define pricing options
   const pricingOptions: PricingOption[] = [
@@ -129,12 +133,19 @@ const TripBookingCard = ({
         
         <TripDetails duration={duration} />
         
-        {!isCustomizedTrip && showDates && <BatchDatesTable batchDates={batchDates} />}
+        {!hideAvailableDates && showDates && <BatchDatesTable batchDates={batchDates} />}
         
-        <ActionButtons
-          onBookingFormOpen={openBookingForm}
-          onDateDialogOpen={openDateDialog}
-        />
+        {isSuggestedTrip ? (
+          <SuggestedActionButtons 
+            onBookingFormOpen={openBookingForm}
+            tripName={tripName}
+          />
+        ) : (
+          <ActionButtons
+            onBookingFormOpen={openBookingForm}
+            onDateDialogOpen={openDateDialog}
+          />
+        )}
         
         <ContactSection />
       </div>
@@ -146,12 +157,14 @@ const TripBookingCard = ({
         tripName={tripName}
       />
 
-      <DateSelectionDialog
-        isOpen={showDateDialog}
-        onClose={closeDateDialog}
-        batchDates={batchDates}
-        tripName={tripName}
-      />
+      {!hideAvailableDates && (
+        <DateSelectionDialog
+          isOpen={showDateDialog}
+          onClose={closeDateDialog}
+          batchDates={batchDates}
+          tripName={tripName}
+        />
+      )}
     </div>
   );
 };

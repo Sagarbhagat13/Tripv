@@ -30,8 +30,9 @@ const CarouselContent = React.forwardRef<
       <div
         ref={ref}
         className={cn(
-          "flex",
-          orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
+          "flex cursor-grab active:cursor-grabbing will-change-transform",
+          // Remove negative margins here which were causing cropping issues
+          orientation === "horizontal" ? "ml-0" : "mt-0 flex-col",
           className
         )}
         {...props}
