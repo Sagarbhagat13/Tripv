@@ -31,22 +31,22 @@ const partners = [
   {
     id: 6,
     name: "OTM",
-    logo: "https://www.otm-india.https://media.licdn.com/dms/image/v2/C4D0BAQGfmjdTU1rzZA/company-logo_200_200/company-logo_200_200/0/1677578350492/otm_largest_b2b_outbound_travel_mart_in_india__logo?e=1747872000&v=beta&t=lDd7l6dyhHm_Elcp9Pir3c0gEqqmCNf1hmrQad2MidA/images/OTM-logo.png",
+    logo: "https://otm.co.in/media_files/OTMLogo_White.png",
   },
   {
     id: 7,
     name: "MAHARASHTRA TOURISM",
-    logo: "https://upload.wikimedia.https://www.mediainfoline.com/wp-content/uploads/2021/02/maharashtra-tourism-logo.jpg/wikipedia/commons/thumb/1/1b/Maharashtra_Tourism_Logo.svg/1200px-Maharashtra_Tourism_Logo.svg.png",
+    logo: "https://www.mtdc.co/_nuxt/img/logo-orange.feffa90.svg",
   },
   {
     id: 8,
     name: "IRCTC",
-    logo: "https://upload.wikimedia.org/https://1000logos.net/wp-content/uploads/2022/02/IRCTC-logo-1536x864.png/en/thumb/5/58/Indian_Railway_Catering_and_Tourism_Corporation_logo.svg/1200px-Indian_Railway_Catering_and_Tourism_Corporation_logo.svg.png",
+    logo: "https://www.irctc.co.in/nget/assets/images/secondry-logo.png",
   },
   {
     id: 9,
     name: "STARTUP INDIA",
-    logo: "https://upload.https://www.startupindia.gov.in/sih/themes/custom/startup_india/images/header-icons/DPIIT-header.png.org/wikipedia/commons/thumb/9/96/Startup_India_Logo.svg/1200px-Startup_India_Logo.svg.png",
+    logo: "https://www.startupindia.gov.in/content/dam/invest-india/newhomepage/DPIIT-header.png",
   },
 ];
 
