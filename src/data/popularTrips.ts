@@ -117,7 +117,7 @@ export const popularTrips: Trip[] = [
     price: 16300,
     discount: 0,
     duration: '6D/5N',
-    image: '../components/images/Blog_20240904-604846050-1725446044.jpg',
+    image: '../src/components/images/Blog_20240904-604846050-1725446044.jpg',
     rating: 4.9,
     reviews: 267,
   },
