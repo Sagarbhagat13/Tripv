@@ -29,7 +29,7 @@ export const popularTrips: Trip[] = [
     price: 17499,
     discount: 0,
     duration: '6D/5N',
-    image: '../components/images/6-nights-7-days-all-girls-leh-ladakh-trip-with-turtuk-JustWravel-1713255355-All-Girls-Ladakh-(L2L)-1.jpg',
+    image: '/images/6-nights-7-days-all-girls-leh-ladakh-trip-with-turtuk-JustWravel-1713255355-All-Girls-Ladakh-(L2L)-1.jpg',
     rating: 4.8,
     reviews: 245,
   },
@@ -139,7 +139,7 @@ export const popularTrips: Trip[] = [
     price: 19999,
     discount: 0,
     duration: '8D/7N',
-    image: '../components/images/Blog_20240904-604846050-1725446044.jpg',
+    image: '/images/Blog_20240904-604846050-1725446044.jpg',
     rating: 4.9,
     reviews: 267,
   }
