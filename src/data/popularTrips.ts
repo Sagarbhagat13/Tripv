@@ -90,7 +90,7 @@ export const popularTrips: Trip[] = [
   },
   {
     id: '7',
-    title: 'Experienece Ladakh',
+    title: 'Ladakh & Zanskar',
     location: 'Ladakh',
     price: 28999,
     discount: 0,

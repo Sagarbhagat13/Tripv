@@ -5,7 +5,7 @@ export const getTripData = (id: string) => {
   // This is mock data, in a real app this would be fetched from an API
   return {
     id: '1',
-    title: 'Manali Backpacking Trip',
+    title: 'sala Backpacking Trip',
     location: 'Himachal Pradesh',
     price: 12999,
     discount: 15,
