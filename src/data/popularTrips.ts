@@ -60,7 +60,7 @@ export const popularTrips: Trip[] = [
     title: 'Experienece Kedarnath',
     location: 'Uttarakhand',
     price: 15499,
-    discount: 5,
+    discount: 0,
     duration: '6D/5N',
     image: '/images/Kedarnath.webp',
     rating: 4.6,
@@ -139,7 +139,7 @@ export const popularTrips: Trip[] = [
     price: 19999,
     discount: 0,
     duration: '8D/7N',
-    image: '/images/Blog_20240904-604846050-1725446044.jpg',
+    image: '/images/Blog_20240904-604846050-1725446044 copy.jpg',
     rating: 4.9,
     reviews: 267,
   }
