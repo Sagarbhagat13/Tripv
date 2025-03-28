@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 // Mocked data for the itinerary
 const ITINERARIES = {
   '1': {
-    title: 'Manali Backpacking Trip',
+    title: 'chinna Backpacking Trip',
     duration: '5 Days / 4 Nights',
     price: 13999,
     description: 'Experience the magic of the mountains with our Manali backpacking trip. Perfect for adventure seekers and nature lovers alike.',
