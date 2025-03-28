@@ -22,7 +22,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 32999,
         discount: 10,
         duration: '7D/6N',
-        image: 'https://images.unsplash.com/photo-1483356256511-b48749959172?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.9,
         reviews: 132
       },
@@ -33,7 +33,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 36500,
         discount: 5,
         duration: '8D/7N',
-        image: 'https://images.unsplash.com/photo-1477346611705-65d1883cee1e?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.8,
         reviews: 98
       },
@@ -44,7 +44,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 28999,
         discount: 8,
         duration: '6D/5N',
-        image: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.7,
         reviews: 76
       }
@@ -57,7 +57,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 42999,
         discount: 0,
         duration: 'Flexible',
-        image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 5.0,
         reviews: 42
       },
@@ -68,7 +68,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 48500,
         discount: 0,
         duration: 'Flexible',
-        image: 'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.9,
         reviews: 38
       }
@@ -85,7 +85,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 18999,
         discount: 12,
         duration: '5D/4N',
-        image: 'https://images.unsplash.com/photo-1570641963303-92ce4845ed4c?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.6,
         reviews: 156
       },
@@ -96,7 +96,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 22500,
         discount: 8,
         duration: '6D/5N',
-        image: 'https://images.unsplash.com/photo-1544715675-1868daba50fd?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.7,
         reviews: 112
       },
@@ -107,7 +107,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 15999,
         discount: 15,
         duration: '4D/3N',
-        image: 'https://images.unsplash.com/photo-1605045544284-d6a147119f5c?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.5,
         reviews: 98
       }
@@ -120,7 +120,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 28999,
         discount: 0,
         duration: 'Flexible',
-        image: 'https://images.unsplash.com/photo-1551411542-127510d15e33?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.9,
         reviews: 48
       },
@@ -131,7 +131,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 32500,
         discount: 0,
         duration: 'Flexible',
-        image: 'https://images.unsplash.com/photo-1465056836041-7f43ac27dcb5?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.8,
         reviews: 36
       }
@@ -148,7 +148,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 16999,
         discount: 10,
         duration: '4D/3N',
-        image: 'https://images.unsplash.com/photo-1470104240373-bc1ae33016a6?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.7,
         reviews: 142
       },
@@ -159,7 +159,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 19500,
         discount: 5,
         duration: '5D/4N',
-        image: 'https://images.unsplash.com/photo-1571536802807-30aa8c2b3772?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.6,
         reviews: 98
       },
@@ -170,7 +170,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 23999,
         discount: 8,
         duration: '6D/5N',
-        image: 'https://images.unsplash.com/photo-1464852045489-bccb7d17fe39?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.8,
         reviews: 112
       }
@@ -183,7 +183,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 28999,
         discount: 0,
         duration: 'Flexible',
-        image: 'https://images.unsplash.com/photo-1570641963303-92ce4845ed4c?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.9,
         reviews: 36
       },
@@ -194,7 +194,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 42500,
         discount: 0,
         duration: 'Flexible',
-        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 5.0,
         reviews: 28
       }
@@ -211,7 +211,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 24999,
         discount: 8,
         duration: '7D/6N',
-        image: 'https://images.unsplash.com/photo-1599661046289-e31897d36cd4?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.8,
         reviews: 178
       },
@@ -222,7 +222,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 28500,
         discount: 10,
         duration: '8D/7N',
-        image: 'https://images.unsplash.com/photo-1599661046251-3c599e0c7a8a?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.7,
         reviews: 156
       },
@@ -246,7 +246,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 35999,
         discount: 0,
         duration: 'Flexible',
-        image: 'https://images.unsplash.com/photo-1590077428593-a33c3fb143e2?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.9,
         reviews: 42
       },
@@ -257,7 +257,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 42500,
         discount: 0,
         duration: 'Flexible',
-        image: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 5.0,
         reviews: 36
       }
@@ -285,7 +285,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 16500,
         discount: 10,
         duration: '5D/4N',
-        image: 'https://images.unsplash.com/photo-1567861911437-538298e4e620?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.6,
         reviews: 142
       },
@@ -296,7 +296,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 18999,
         discount: 8,
         duration: '5D/4N',
-        image: 'https://images.unsplash.com/photo-1518509562904-e7ef99cdbc75?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.7,
         reviews: 98
       }
@@ -309,7 +309,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 22999,
         discount: 0,
         duration: 'Flexible',
-        image: 'https://images.unsplash.com/photo-1587918986787-013e313f6f0c?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.8,
         reviews: 48
       },
@@ -320,7 +320,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 32500,
         discount: 0,
         duration: 'Flexible',
-        image: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.9,
         reviews: 36
       }
@@ -337,7 +337,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 22999,
         discount: 12,
         duration: '6D/5N',
-        image: 'https://images.unsplash.com/photo-1602157729150-3edc9cb4c4c6?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.8,
         reviews: 178
       },
@@ -348,7 +348,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 25500,
         discount: 8,
         duration: '7D/6N',
-        image: 'https://images.unsplash.com/photo-1590123031473-33abab056b5d?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.7,
         reviews: 156
       },
@@ -359,7 +359,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 19999,
         discount: 10,
         duration: '5D/4N',
-        image: 'https://images.unsplash.com/photo-1599661046441-5a1786e5c6a2?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.6,
         reviews: 98
       }
@@ -372,7 +372,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 32999,
         discount: 0,
         duration: 'Flexible',
-        image: 'https://images.unsplash.com/photo-1602157729140-62a0a0bc14c4?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.9,
         reviews: 42
       },
@@ -383,7 +383,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 38500,
         discount: 0,
         duration: 'Flexible',
-        image: 'https://images.unsplash.com/photo-1580289145536-81a3c9a9dbb8?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 5.0,
         reviews: 36
       }
@@ -400,7 +400,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 21999,
         discount: 10,
         duration: '6D/5N',
-        image: 'https://images.unsplash.com/photo-1524613032093-c6228e64d7bf?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.7,
         reviews: 145
       },
@@ -411,7 +411,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 24500,
         discount: 8,
         duration: '7D/6N',
-        image: 'https://images.unsplash.com/photo-1516563643398-b04b5e203b63?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.6,
         reviews: 126
       },
@@ -422,7 +422,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 18999,
         discount: 12,
         duration: '5D/4N',
-        image: 'https://images.unsplash.com/photo-1505159940484-eb2b9f2588e2?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.5,
         reviews: 98
       }
@@ -435,7 +435,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 28999,
         discount: 0,
         duration: 'Flexible',
-        image: 'https://images.unsplash.com/photo-1583417267826-aebc4d4542d9?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.8,
         reviews: 38
       },
@@ -446,7 +446,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 32500,
         discount: 0,
         duration: 'Flexible',
-        image: 'https://images.unsplash.com/photo-1536294837331-1a8abcce1bfc?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.9,
         reviews: 32
       }
@@ -463,7 +463,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 28999,
         discount: 10,
         duration: '7D/6N',
-        image: 'https://images.unsplash.com/photo-1586426773736-56c25c9b3a0c?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.8,
         reviews: 165
       },
@@ -474,7 +474,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 32500,
         discount: 8,
         duration: '8D/7N',
-        image: 'https://images.unsplash.com/photo-1496947850313-7743325fa58c?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.9,
         reviews: 142
       },
@@ -485,7 +485,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 26999,
         discount: 12,
         duration: '6D/5N',
-        image: 'https://images.unsplash.com/photo-1544551763-92ab472cad5d?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.7,
         reviews: 98
       }
@@ -498,7 +498,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 42999,
         discount: 0,
         duration: 'Flexible',
-        image: 'https://images.unsplash.com/photo-1560760097-9e8fef1e6ff7?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 5.0,
         reviews: 38
       },
@@ -509,7 +509,7 @@ export const stateTrips: Record<string, StateData> = {
         price: 48500,
         discount: 0,
         duration: 'Flexible',
-        image: 'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.9,
         reviews: 32
       }

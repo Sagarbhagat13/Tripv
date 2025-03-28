@@ -19,7 +19,7 @@ export const regionalTrips: RegionalTrips[] = [
         price: 24999,
         discount: 15,
         duration: '6D/5N',
-        image: 'https://images.unsplash.com/photo-1612436395449-509dab4a5642?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.8,
         reviews: 156
       },
@@ -30,7 +30,7 @@ export const regionalTrips: RegionalTrips[] = [
         price: 18999,
         discount: 10,
         duration: '5D/4N',
-        image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.7,
         reviews: 134
       },
@@ -41,7 +41,7 @@ export const regionalTrips: RegionalTrips[] = [
         price: 16999,
         discount: 8,
         duration: '4D/3N',
-        image: 'https://images.unsplash.com/photo-1561361058-c24cecae35ca?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.6,
         reviews: 98
       }
@@ -57,7 +57,7 @@ export const regionalTrips: RegionalTrips[] = [
         price: 22999,
         discount: 12,
         duration: '5D/4N',
-        image: 'https://images.unsplash.com/photo-1609766428302-a39ddcacad7f?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.9,
         reviews: 187
       },
@@ -68,7 +68,7 @@ export const regionalTrips: RegionalTrips[] = [
         price: 17999,
         discount: 8,
         duration: '4D/3N',
-        image: 'https://images.unsplash.com/photo-1600100292781-ad9f4b9ce5bd?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.6,
         reviews: 112
       },
@@ -79,7 +79,7 @@ export const regionalTrips: RegionalTrips[] = [
         price: 19999,
         discount: 10,
         duration: '5D/4N',
-        image: 'https://images.unsplash.com/photo-1598222864721-b743b9f1d9cb?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.7,
         reviews: 143
       }
@@ -95,7 +95,7 @@ export const regionalTrips: RegionalTrips[] = [
         price: 21999,
         discount: 12,
         duration: '5D/4N',
-        image: 'https://images.unsplash.com/photo-1586420930295-7a7d26b54fdf?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.7,
         reviews: 132
       },
@@ -106,7 +106,7 @@ export const regionalTrips: RegionalTrips[] = [
         price: 26999,
         discount: 8,
         duration: '6D/5N',
-        image: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.8,
         reviews: 118
       },
@@ -117,7 +117,7 @@ export const regionalTrips: RegionalTrips[] = [
         price: 23999,
         discount: 10,
         duration: '7D/6N',
-        image: 'https://images.unsplash.com/photo-1626077578726-744055a7c979?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.6,
         reviews: 96
       }
@@ -133,7 +133,7 @@ export const regionalTrips: RegionalTrips[] = [
         price: 18999,
         discount: 15,
         duration: '4D/3N',
-        image: 'https://images.unsplash.com/photo-1582972236019-ea4af5ffe587?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.8,
         reviews: 176
       },
@@ -144,7 +144,7 @@ export const regionalTrips: RegionalTrips[] = [
         price: 22999,
         discount: 10,
         duration: '5D/4N',
-        image: 'https://images.unsplash.com/photo-1599661046289-e31897ec8548?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.7,
         reviews: 146
       },
@@ -155,7 +155,7 @@ export const regionalTrips: RegionalTrips[] = [
         price: 20999,
         discount: 8,
         duration: '5D/4N',
-        image: 'https://images.unsplash.com/photo-1584487487374-6aa12cfced1f?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         rating: 4.6,
         reviews: 122
       }
