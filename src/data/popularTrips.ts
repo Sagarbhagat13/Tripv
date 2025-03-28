@@ -24,12 +24,12 @@ export interface Trip {
 export const popularTrips: Trip[] = [
   {
     id: '1',
-    title: 'Manali Backpacking Trip',
-    location: 'Himachal Pradesh',
-    price: 12999,
-    discount: 15,
-    duration: '5D/4N',
-    image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
+    title: 'Best of Leh-ladakh Tempo',
+    location: 'Ladakh',
+    price: 17499,
+    discount: 0,
+    duration: '6D/5N',
+    image: 'src/components/images/6-nights-7-days-all-girls-leh-ladakh-trip-with-turtuk-JustWravel-1713255355-All-Girls-Ladakh-(L2L)-1.jpg',
     rating: 4.8,
     reviews: 245,
   },
